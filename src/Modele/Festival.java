@@ -2,7 +2,7 @@ package Modele;
 /**
  * Classe qui definit les festivals avec un nom, un genre, un tableau de Date, un lieu et un tableau de places
  * 
- * @author Benjamin
+ * @author Benjamin, Loïc
  *
  */
 public class Festival {
@@ -29,10 +29,9 @@ public class Festival {
 		Places = parPlaces;
 	}
 	/**
-	 * Fonction qui verifie si un festival est reservable pour un jour précis
-	 * @param parJour
-	 * @param parMois
-	 * @return true si vrai
+	 * Méthode qui renvoie un string par rapport au jour de début et de fin du festival
+	 * @param parFestival
+	 * @return
 	 */
 	public String toString(Festival parFestival){
 		if(parFestival.chDate[0].getChMois()==parFestival.chDate[parFestival.chDate.length-1].getChMois()){
@@ -43,6 +42,12 @@ public class Festival {
 		}
 		return ("le Festival \n "+chNom+"\n aura lieu à "+chLieu+" \n du \n "+chDate[0].toString()+"\n au \n "+chDate[chDate.length-1].toString());
 	}
+	/**
+	 * Méthode qui permet de vérifier si il y a des places de libres pour un festivals
+	 * @param parJour
+	 * @param parMois
+	 * @return
+	 */
 	public boolean estReservable(int parJour, int parMois){
 		for (int i = 0;i< chDate.length;i++){
 			if (chDate[i].getChMois() == parMois && chDate[i].getChJour()== parJour){
@@ -54,7 +59,7 @@ public class Festival {
 		return false;
 	}
 	/**
-	 * Fonction qui verifie si un festival est complet
+	 * Méthode qui verifie si un festival est complet
 	 * @return true si vrai
 	 */
 	public boolean estComplet(){

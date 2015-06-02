@@ -13,7 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Modele.Festival;
-
+/**
+ * Interface de Saisie pour la création d'un festival
+ * @author Loïc, Benjamin
+ *
+ */
 public class InterfaceSaisie extends JPanel implements ActionListener{
 	
 	//JLabel
@@ -87,14 +91,6 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 		cont.gridx=10;cont.gridwidth=0;
 		add(boutonCree,cont);
 		boutonCree.addActionListener(this);
-		
-		
-		
-		
-		
-		
-	
-	
 	}
 
 

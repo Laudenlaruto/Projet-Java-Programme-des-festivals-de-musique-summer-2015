@@ -20,7 +20,7 @@ public class Programme implements Serializable{
 			chProgramme = new HashMap<String, ArrayList<Festival>>();
 		}
 		/**
-		 * Fonction qui ajout un festival avec son genre comme clé
+		 * Méthode qui ajout un festival avec son genre comme clé
 		 * Verifie si la clé est déjà présente dans la HashMap et si elle l'est l'ajoute avec la même clé sinon la crée.
 		 * @param parFestival
 		 */
@@ -38,7 +38,7 @@ public class Programme implements Serializable{
 			}
 		}
 		/**
-		 * Renvoie tout les festivales dans l'ordre de leur genre.
+		 * Méthode qui renvoie tout les festivales dans l'ordre de leur genre.
 		 */
 		public String toString()
 		{
@@ -54,7 +54,7 @@ public class Programme implements Serializable{
 			return message; 
 		}
 		/**
-		 * Fonction qui determine le nombre de festival maximum par genre pour pouvoir definir le nombre de colonne de l'interface Affichage et Réservation
+		 * Méthode qui determine le nombre de festival maximum par genre pour pouvoir definir le nombre de colonne de l'interface Affichage et Réservation
 		 * @return
 		 */
 		public int nombreDeFestivalsParGenre(){

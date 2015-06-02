@@ -8,8 +8,6 @@ import java.io.ObjectOutputStream;
 
 import Modele.Programme;
 
-
-
 /**
  * Classe qui permet la lecture et l'ecriture dans un fichier
  * @author Benjamin
@@ -17,7 +15,7 @@ import Modele.Programme;
  */
 public class Fichier  {
 	/**
-	 * Lit un fichier et renvoi l'objet lu
+	 *Méthode Lit un fichier et renvoi l'objet lu
 	 * @param parFichier
 	 * @return l'objet lu
 	 */
@@ -40,7 +38,7 @@ public class Fichier  {
 		return objetLu;
 	}
 		/**
-		 * Ecrit dans un fichier donné un objet donné
+		 * Méthode qui ecrit dans un fichier donné un objet donné
 		 * @param parFichier
 		 * @param parObject
 		 */
@@ -59,7 +57,7 @@ public class Fichier  {
 			}
 		}
 		/**
-		 * Reset un fichier pour pas qu'il y est d'erreur où le fichier serais vide.
+		 *Méthode qui reset un fichier pour pas qu'il y est d'erreur où le fichier serais vide.
 		 * @param parFichier
 		 */
 		public static void reset(File parFichier){

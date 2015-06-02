@@ -22,13 +22,6 @@ import Modele.Programme;
  * @author Loïc, Benjamin
  *
  */
-/**
- * Classe du conteneur secondaire, qui hérite de JPanel, instancie un JTabbedPane
- * avec les interfaces de saisie, affichage et réservation
- * @author Loïc, Benjamin
- *
- */
-
 public class PanelFils extends JPanel implements ActionListener{
 	private JMenuItem initMenu = new JMenuItem("Initialisation",'I');
 	private JMenuItem progMenu = new JMenuItem("Programme",'P');
@@ -79,8 +72,6 @@ public class PanelFils extends JPanel implements ActionListener{
 		
 		
 	} //PanelFils()
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent parEvt) {

@@ -63,7 +63,7 @@ public class Date implements Serializable
 		return(chJour+" "+chMoisAnnee);
 	}//toString()
 	/**
-	 * Fonction permetant de déterminer le dernier jour du mois grâce au mois et a l'année
+	 * Méthode permetant de déterminer le dernier jour du mois grâce au mois et a l'année
 	 * @param parMois le mois pour lequel on cherche le dernier jour du mois
 	 * @param parAn l'année pour lequel on cherche le dernier jour du mois
 	 * @return le dernier jour du mois : int
@@ -87,7 +87,7 @@ public class Date implements Serializable
 			}
 	}//dernierJourDuMois()
 	/**
-	 * Fonction qui verifie si la date est bien dans le calendrier grégorien
+	 * Méthode qui verifie si la date est bien dans le calendrier grégorien
 	 * @return boolean
 	 */
 	public boolean estValide()

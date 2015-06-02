@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class FestivalHelper {
 /**
- * Fonction qui renvoie un arraylist de festival d'un genre donné
+ * Méthode qui renvoie un arraylist de festival d'un genre donné
  * @param map
  * @param Genre
  * @return
