@@ -11,10 +11,10 @@ import javax.swing.JFrame ;
 public class FenetreMere extends JFrame{
 	
 	public FenetreMere (){
-		super ("Gestionnaire de Festivals"); 
+		super ("Festivals de musique été 2015"); 
 		setContentPane (new PanelFils ());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(1100,475); setVisible(true);  setLocation(600,250);
+		setSize(1100,475); setVisible(true);  setLocation(100,250);
 	} // FenetreMere ()
 	 	
 	
