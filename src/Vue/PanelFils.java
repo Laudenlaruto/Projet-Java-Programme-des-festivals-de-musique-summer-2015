@@ -28,7 +28,7 @@ import javax.swing.KeyStroke;
 public class PanelFils extends JPanel implements ActionListener{
 	private JMenuItem initMenu = new JMenuItem("Initialisation",'I');
 	private JMenuItem progMenu = new JMenuItem("Programme",'P');
-	private JMenuItem reserMenu = new JMenuItem("Réservation",'R');
+	private JMenuItem reservMenu = new JMenuItem("Réservation",'R');
 	private JMenuBar menuBar = new JMenuBar();
 	private JPanel panelTest = new JPanel();
 	private JPanel panelMenu = new JPanel();
@@ -44,19 +44,21 @@ public class PanelFils extends JPanel implements ActionListener{
 	    progMenu.addActionListener(this);
 	    menuBar.add(progMenu);
 	    progMenu.setAccelerator(KeyStroke.getKeyStroke('P',java.awt.Event.CTRL_MASK));
-	    reserMenu = new JMenuItem("Réservation",'R');
-	    reserMenu.addActionListener(this);
-	    menuBar.add(reserMenu);
-	    reserMenu.setAccelerator(KeyStroke.getKeyStroke('R',java.awt.Event.CTRL_MASK));
-
+	    reservMenu = new JMenuItem("Réservation",'R');
+	    reservMenu.addActionListener(this);
+	    menuBar.add(reservMenu);
+	    reservMenu.setAccelerator(KeyStroke.getKeyStroke('R',java.awt.Event.CTRL_MASK));
+	    initMenu.setBackground(new Color(208,237,189));
+	    progMenu.setBackground(new Color(208,237,189));
+	    reservMenu.setBackground(new Color(208,237,189));
 	    //BorderLayout
 	    this.setLayout(new BorderLayout());
 	    panelMenu.setLayout(new BorderLayout());
 		panelMenu.add(menuBar,BorderLayout.WEST);
 		add(panelMenu,BorderLayout.NORTH);
 		add(panelTest,BorderLayout.CENTER);
-		panelTest.setBackground(new Color(255,255,255));
-		
+		panelTest.setBackground(new Color(208,237,189));
+		panelMenu.setBackground(new Color(208,237,189));
 	
 		
 		
@@ -76,7 +78,7 @@ public class PanelFils extends JPanel implements ActionListener{
 			panelTest.setBackground(new Color(0,255,255));
 		}
 		
-		if(parEvt.getSource()==reserMenu){
+		if(parEvt.getSource()==reservMenu){
 			panelTest.setBackground(new Color(255,255,0));
 		}
 	}
