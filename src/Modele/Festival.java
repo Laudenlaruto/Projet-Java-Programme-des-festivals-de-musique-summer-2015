@@ -28,10 +28,32 @@ public class Festival {
 		chLieu = chLieu;
 		Places = places;
 	}
+	/**
+	 * Fonction qui verifie si un festival est reservable pour un jour précis
+	 * @param parJour
+	 * @param parMois
+	 * @return true si vrai
+	 */
 	public boolean estReservable(int parJour, int parMois){
+		for (int i = 0;i< chDate.length;i++){
+			if (chDate[i].getChMois() == parMois && chDate[i].getChJour()== parJour){
+				if (Places[i] != 0){
+					return true;
+				}
+			}
+		}
 		return false;
-		
 	}
-	
-
+	/**
+	 * Fonction qui verifie si un festival est complet
+	 * @return true si vrai
+	 */
+	public boolean estComplet(){
+		for(int i =0;i<chDate.length;i++){
+			if(Places[i] != 0){
+				return false;
+			}
+		}
+		return true;
+	}
 }
