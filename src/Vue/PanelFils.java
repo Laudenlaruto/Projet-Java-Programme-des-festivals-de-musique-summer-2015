@@ -36,6 +36,7 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JMenuBar menuBar = new JMenuBar();
 	private JPanel panelMenu = new JPanel();
 	private JTable chTableInterfaceAffichage = new JTable();
+	private InterfaceSaisie interfaceSaisie = new InterfaceSaisie();
 	private Programme chProgramme;
 	
 	public PanelFils(){
@@ -71,9 +72,9 @@ public class PanelFils extends JPanel implements ActionListener{
 			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
 			}
 		JScrollPane scroll = new JScrollPane(chTableInterfaceAffichage);
-		add(scroll,BorderLayout.CENTER);
+		//add(scroll,BorderLayout.CENTER);
 		panelMenu.setBackground(new Color(208,237,189));
-	
+		add(interfaceSaisie);
 		
 		
 		
