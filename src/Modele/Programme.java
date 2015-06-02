@@ -53,6 +53,26 @@ public class Programme implements Serializable{
 			}
 			return message; 
 		}
+		/**
+		 * Fonction qui determine le nombre de festival maximum par genre pour pouvoir definir le nombre de colonne de l'interface Affichage et Réservation
+		 * @return
+		 */
+		public int nombreDeFestivalsParGenre(){
+			int max =0;
+			if(!chProgramme.isEmpty()){
+				for (String Cle : chProgramme.keySet()) {
+					List<Festival> L = chProgramme.get(Cle);
+					int maxTemp=0;
+					for (Festival festival : L) {
+						maxTemp++;
+					}
+					if (maxTemp>max){
+						max = maxTemp;
+					}
+				}
+			}
+			return max;
+		}
 		public HashMap<String, ArrayList<Festival>> getChProgramme() {
 			return chProgramme;
 		}
