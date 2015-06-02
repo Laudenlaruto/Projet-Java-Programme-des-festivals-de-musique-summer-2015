@@ -30,7 +30,7 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JMenuItem progMenu = new JMenuItem("Programme",'P');
 	private JMenuItem reservMenu = new JMenuItem("Réservation",'R');
 	private JMenuBar menuBar = new JMenuBar();
-	private JPanel panelTest = new JPanel();
+	private InterfaceSaisie panelTest = new InterfaceSaisie();
 	private JPanel panelMenu = new JPanel();
 	
 	
