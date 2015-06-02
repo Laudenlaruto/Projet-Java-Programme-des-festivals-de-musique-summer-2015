@@ -2,9 +2,6 @@ package Vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
+import javax.swing.table.TableCellRenderer;
 
 import Modele.Date;
 import Modele.Festival;
@@ -65,7 +63,13 @@ public class PanelFils extends JPanel implements ActionListener{
 		panelMenu.add(menuBar,BorderLayout.WEST);
 		add(panelMenu,BorderLayout.NORTH);
 		
+		
+		chTableInterfaceAffichage.setRowHeight(50);
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(chProgramme));
+		chTableInterfaceAffichage.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		for(int i=0; i<Festival.Genres.length-1;i++){
+			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
+			}
 		JScrollPane scroll = new JScrollPane(chTableInterfaceAffichage);
 		add(scroll,BorderLayout.CENTER);
 		panelMenu.setBackground(new Color(208,237,189));

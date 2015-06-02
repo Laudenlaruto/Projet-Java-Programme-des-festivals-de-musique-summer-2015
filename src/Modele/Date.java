@@ -60,7 +60,7 @@ public class Date implements Serializable
 		 */
 	public String toString()
 	{
-		return(chJour+" "+chMoisAnnee+" "+chAn);
+		return(chJour+" "+chMoisAnnee);
 	}//toString()
 	/**
 	 * Fonction permetant de déterminer le dernier jour du mois grâce au mois et a l'année

@@ -14,7 +14,7 @@ public class FenetreMere extends JFrame{
 		super ("Festivals de musique été 2015"); 
 		setContentPane (new PanelFils ());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(1100,475); setVisible(true);  setLocation(100,250);
+		setSize(1100,600); setVisible(true);  setLocation(100,50);
 		//this.pack();
 	} // FenetreMere ()
 	 	

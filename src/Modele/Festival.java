@@ -34,8 +34,14 @@ public class Festival {
 	 * @param parMois
 	 * @return true si vrai
 	 */
-	public String toString(){
-		return ("le Festival : "+chNom+" aura lieu : "+chLieu+"du "+chDate[0].toString()+"au "+chDate[chDate.length-1].toString());
+	public String toString(Festival parFestival){
+		if(parFestival.chDate[0].getChMois()==parFestival.chDate[parFestival.chDate.length-1].getChMois()){
+			if(parFestival.chDate[0].getChJour()==parFestival.chDate[parFestival.chDate.length-1].getChJour()){
+				return ("le Festival \n "+chNom+"\n aura lieu à "+chLieu+" \n le \n "+chDate[0].toString());
+			}
+			return ("le Festival \n "+chNom+"\n aura lieu à "+chLieu+" \n du \n "+chDate[0].getChJour()+"au"+chDate[chDate.length-1].getChJour());
+		}
+		return ("le Festival \n "+chNom+"\n aura lieu à "+chLieu+" \n du \n "+chDate[0].toString()+"\n au \n "+chDate[chDate.length-1].toString());
 	}
 	public boolean estReservable(int parJour, int parMois){
 		for (int i = 0;i< chDate.length;i++){
