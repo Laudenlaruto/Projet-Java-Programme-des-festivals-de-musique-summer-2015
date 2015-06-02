@@ -1,6 +1,6 @@
 package Modele;
 /**
- * Classe qui defini les festivals avec un nom, un genre, un tableau de Date, un lieu et un tableau de places
+ * Classe qui definit les festivals avec un nom, un genre, un tableau de Date, un lieu et un tableau de places
  * 
  * @author Benjamin
  *
@@ -12,7 +12,7 @@ public class Festival {
 	private Date chDate[];
 	private String chLieu;
 	private int Places[];
-	
+	public String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
 	/**
 	 * 
 	 * @param chNom
