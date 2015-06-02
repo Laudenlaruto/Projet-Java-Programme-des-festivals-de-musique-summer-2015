@@ -19,14 +19,14 @@ public class Festival {
 	 * @param chGenre
 	 * @param chDate
 	 * @param chLieu
-	 * @param places
+	 * @param Places
 	 */
-	public Festival(String chNom, String chGenre, Date[] chDate, String chLieu, int[] places) {
-		chNom = chNom;
-		chGenre = chGenre;
-		chDate = chDate;
-		chLieu = chLieu;
-		Places = places;
+	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces) {
+		chNom = parNom;
+		chGenre = parGenre;
+		chDate = parDate;
+		chLieu = parLieu;
+		Places = parPlaces;
 	}
 	/**
 	 * Fonction qui verifie si un festival est reservable pour un jour précis
@@ -34,6 +34,9 @@ public class Festival {
 	 * @param parMois
 	 * @return true si vrai
 	 */
+	public String toString(){
+		return ("le Festival : "+chNom+" aura lieu : "+chLieu+"du "+chDate[0].toString()+"au "+chDate[chDate.length-1].toString());
+	}
 	public boolean estReservable(int parJour, int parMois){
 		for (int i = 0;i< chDate.length;i++){
 			if (chDate[i].getChMois() == parMois && chDate[i].getChJour()== parJour){
