@@ -10,8 +10,17 @@ import Modele.Programme;
 
 
 
-
+/**
+ * Classe qui permet la lecture et l'ecriture dans un fichier
+ * @author Benjamin
+ *
+ */
 public class Fichier  {
+	/**
+	 * Lit un fichier et renvoi l'objet lu
+	 * @param parFichier
+	 * @return l'objet lu
+	 */
 	public static Object lecture(File parFichier){
 		ObjectInputStream flux;
 		Object objetLu = null;
@@ -30,7 +39,11 @@ public class Fichier  {
 		} 
 		return objetLu;
 	}
-
+		/**
+		 * Ecrit dans un fichier donné un objet donné
+		 * @param parFichier
+		 * @param parObject
+		 */
 		public static void ecriture(File parFichier, Object parObject){
 			ObjectOutputStream flux = null;
 			try{
@@ -45,6 +58,10 @@ public class Fichier  {
 				
 			}
 		}
+		/**
+		 * Reset un fichier pour pas qu'il y est d'erreur où le fichier serais vide.
+		 * @param parFichier
+		 */
 		public static void reset(File parFichier){
 			ObjectOutputStream flux = null;
 			try{
