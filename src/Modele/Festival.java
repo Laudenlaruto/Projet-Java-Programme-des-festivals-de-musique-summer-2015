@@ -59,4 +59,24 @@ public class Festival {
 		}
 		return true;
 	}
+	//Getter ----------------------
+	public String getChNom() {
+		return chNom;
+	}
+	public void setChNom(String chNom) {
+		this.chNom = chNom;
+	}
+	public String getChGenre() {
+		return chGenre;
+	}
+	//Setter --------------------
+	public void setChGenre(String chGenre) {
+		this.chGenre = chGenre;
+	}
+	public String getChLieu() {
+		return chLieu;
+	}
+	public void setChLieu(String chLieu) {
+		this.chLieu = chLieu;
+	}
 }
