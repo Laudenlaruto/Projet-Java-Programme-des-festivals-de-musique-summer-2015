@@ -1,6 +1,6 @@
 package Modele;
 /**
- * Classe qui defini les Festivals avec un nom, un genre, un tableau de Date, un lieu et un tableau de places
+ * Classe qui defini les festivals avec un nom, un genre, un tableau de Date, un lieu et un tableau de places
  * 
  * @author Benjamin
  *
