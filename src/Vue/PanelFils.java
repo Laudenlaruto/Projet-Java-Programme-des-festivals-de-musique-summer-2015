@@ -2,16 +2,20 @@ package Vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.KeyStroke;
+import javax.swing.table.TableCellRenderer;
+
+import Modele.Date;
+import Modele.Festival;
+import Modele.Programme;
 /**
  * Classe du conteneur secondaire, qui hérite de JPanel, instancie un JTabbedPane
  * avec les interfaces de saisie, affichage et réservation
@@ -30,21 +34,23 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JMenuItem progMenu = new JMenuItem("Programme",'P');
 	private JMenuItem reservMenu = new JMenuItem("Réservation",'R');
 	private JMenuBar menuBar = new JMenuBar();
-	private InterfaceSaisie panelTest = new InterfaceSaisie();
 	private JPanel panelMenu = new JPanel();
-	
+	private JTable chTableInterfaceAffichage = new JTable();
+	private Programme chProgramme;
 	
 	public PanelFils(){
-
+		//Valeurs
+		chProgramme = new Programme();
+		Date[] dates = {new Date()};
+		int[] places = {500};
+		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places));
 		//Préparation du Menu
 		initMenu.addActionListener(this);
 	    menuBar.add(initMenu);
 	    initMenu.setAccelerator(KeyStroke.getKeyStroke('I',java.awt.Event.CTRL_MASK));
-	    progMenu = new JMenuItem("Programme",'P');
 	    progMenu.addActionListener(this);
 	    menuBar.add(progMenu);
 	    progMenu.setAccelerator(KeyStroke.getKeyStroke('P',java.awt.Event.CTRL_MASK));
-	    reservMenu = new JMenuItem("Réservation",'R');
 	    reservMenu.addActionListener(this);
 	    menuBar.add(reservMenu);
 	    reservMenu.setAccelerator(KeyStroke.getKeyStroke('R',java.awt.Event.CTRL_MASK));
@@ -56,8 +62,16 @@ public class PanelFils extends JPanel implements ActionListener{
 	    panelMenu.setLayout(new BorderLayout());
 		panelMenu.add(menuBar,BorderLayout.WEST);
 		add(panelMenu,BorderLayout.NORTH);
-		add(panelTest,BorderLayout.CENTER);
-		panelTest.setBackground(new Color(208,237,189));
+		
+		
+		chTableInterfaceAffichage.setRowHeight(50);
+		chTableInterfaceAffichage.setModel(new InterfaceAffichage(chProgramme));
+		chTableInterfaceAffichage.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		for(int i=0; i<Festival.Genres.length-1;i++){
+			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
+			}
+		JScrollPane scroll = new JScrollPane(chTableInterfaceAffichage);
+		add(scroll,BorderLayout.CENTER);
 		panelMenu.setBackground(new Color(208,237,189));
 	
 		
@@ -71,15 +85,12 @@ public class PanelFils extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent parEvt) {
 		
 		if(parEvt.getSource()==initMenu){
-			panelTest.setBackground(new Color(255,0,255));
 		}
 		
 		if(parEvt.getSource()==progMenu){
-			panelTest.setBackground(new Color(0,255,255));
 		}
 		
 		if(parEvt.getSource()==reservMenu){
-			panelTest.setBackground(new Color(255,255,0));
 		}
 	}
 	
