@@ -34,7 +34,7 @@ public class Date implements Serializable
 			chJourSemaine = JourDeSemaine[dateAuj.get(Calendar.DAY_OF_WEEK)-1];
 			chNumSemaine = dateAuj.get(Calendar.DAY_OF_WEEK);
 			chMoisAnnee = moisDeLannee[chMois-1];
-		}
+		}//Date()
 	/**
 	 * Construcuteur avec Parametre qui renvoie la date grace a l'anné le mois et le jour	
 	 * @param parJour
@@ -54,14 +54,14 @@ public class Date implements Serializable
 			chNumSemaine = date.get(Calendar.DAY_OF_WEEK);
 			chJourSemaine = JourDeSemaine[chNumSemaine-1];
 			chMoisAnnee = moisDeLannee[chMois-1];
-		}
+		}//Date()
 		/**
 		 * toString personalisé 
 		 */
 	public String toString()
 	{
 		return(chJour+" "+chMoisAnnee+" "+chAn);
-	}
+	}//toString()
 	/**
 	 * Fonction permetant de déterminer le dernier jour du mois grâce au mois et a l'année
 	 * @param parMois le mois pour lequel on cherche le dernier jour du mois
@@ -85,7 +85,7 @@ public class Date implements Serializable
 			default:
 				return 31;
 			}
-	}
+	}//dernierJourDuMois()
 	/**
 	 * Fonction qui verifie si la date est bien dans le calendrier grégorien
 	 * @return boolean
@@ -99,7 +99,9 @@ public class Date implements Serializable
 		if (chJour<1 || chJour > dernierJourDuMois(chMois,chAn))
 			return false;
 		return true;
-	}
+	}//estValide()
+	
+	// Getter ---------------------------------------
 	public int getChJour() {
 		return chJour;
 	}
@@ -115,6 +117,7 @@ public class Date implements Serializable
 	public int getChAn() {
 		return chAn;
 	}
+	// Setter ------------------------------------------
 	public void setChAn(int chAn) {
 		this.chAn = chAn;
 	}
@@ -139,4 +142,4 @@ public class Date implements Serializable
 
 	
 	
-}
+}//Date
