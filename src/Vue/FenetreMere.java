@@ -15,6 +15,7 @@ public class FenetreMere extends JFrame{
 		setContentPane (new PanelFils ());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1100,475); setVisible(true);  setLocation(100,250);
+		//this.pack();
 	} // FenetreMere ()
 	 	
 	

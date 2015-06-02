@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,11 +31,11 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JMenuItem reserMenu = new JMenuItem("Réservation",'R');
 	private JMenuBar menuBar = new JMenuBar();
 	private JPanel panelTest = new JPanel();
+	private JPanel panelMenu = new JPanel();
 	
 	
 	public PanelFils(){
 
-		
 		//Préparation du Menu
 		initMenu.addActionListener(this);
 	    menuBar.add(initMenu);
@@ -49,10 +48,14 @@ public class PanelFils extends JPanel implements ActionListener{
 	    reserMenu.addActionListener(this);
 	    menuBar.add(reserMenu);
 	    reserMenu.setAccelerator(KeyStroke.getKeyStroke('R',java.awt.Event.CTRL_MASK));
+
 	    //BorderLayout
 	    this.setLayout(new BorderLayout());
-		add(menuBar,BorderLayout.NORTH);
+	    panelMenu.setLayout(new BorderLayout());
+		panelMenu.add(menuBar,BorderLayout.WEST);
+		add(panelMenu,BorderLayout.NORTH);
 		add(panelTest,BorderLayout.CENTER);
+		panelTest.setBackground(new Color(255,255,255));
 		
 	
 		
