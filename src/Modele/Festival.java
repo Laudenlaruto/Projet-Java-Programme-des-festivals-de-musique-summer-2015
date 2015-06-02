@@ -12,7 +12,7 @@ public class Festival {
 	private Date chDate[];
 	private String chLieu;
 	private int Places[];
-	public String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
+	public static final String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
 	/**
 	 * 
 	 * @param chNom
