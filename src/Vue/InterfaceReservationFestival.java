@@ -17,8 +17,13 @@ import Fichier.Fichier;
 import Modele.Date;
 import Modele.Festival;
 import Modele.Programme;
-
+/**
+ * Interface qui s'ouvre losque que l'on veut reserver un festival
+ * @author Benjamin, Loïc
+ *
+ */
 public class InterfaceReservationFestival extends JPanel implements ActionListener {
+	private Programme chProgramme;	
 	JComboBox<Date> boxDates = new JComboBox<Date>();
 	JLabel labelNomFestival;
 	JLabel labelPrixFestival;
@@ -26,7 +31,12 @@ public class InterfaceReservationFestival extends JPanel implements ActionListen
 	JButton boutonReservation;
 	Festival chFestival ;
 	File file = new File("Programme");
-	private Programme chProgramme;
+
+	/**
+	 * Constructeur de l'interface qui extends JPanel
+	 * @param festival
+	 * @param parProgramme
+	 */
 	public InterfaceReservationFestival(Festival festival, Programme parProgramme){
 		chProgramme = parProgramme;
 		chFestival = festival;
