@@ -11,12 +11,8 @@ public class Festival {
 	private String chGenre;
 	private Date chDate[];
 	private String chLieu;
-<<<<<<< HEAD
-	private int Places[];
 	private String chImagePath;
-=======
 	private int chPlaces[];
->>>>>>> branch 'InterfaceSaisie2' of https://github.com/Laudenlaruto/Projet-Java-Programme-des-festivals-de-musique-summer-2015.git
 	public static final String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
 	/**
 	 * 
@@ -26,20 +22,14 @@ public class Festival {
 	 * @param chLieu
 	 * @param Places
 	 */
-<<<<<<< HEAD
+
 	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces,String parImagePath) {
-=======
-	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces){
->>>>>>> branch 'InterfaceSaisie2' of https://github.com/Laudenlaruto/Projet-Java-Programme-des-festivals-de-musique-summer-2015.git
+
 		chNom = parNom;
 		chGenre = parGenre;
 		chDate = parDate;
 		chLieu = parLieu;
-<<<<<<< HEAD
-		Places = parPlaces;
 		chImagePath = parImagePath;
-	}
-=======
 		chPlaces = parPlaces;
 	}//Festival()
 	
@@ -56,7 +46,6 @@ public class Festival {
 		chDate = tabDate;
 		chPlaces = tabPlace;
 	}//Festival()
->>>>>>> branch 'InterfaceSaisie2' of https://github.com/Laudenlaruto/Projet-Java-Programme-des-festivals-de-musique-summer-2015.git
 	/**
 	 * Méthode qui renvoie un string par rapport au jour de début et de fin du festival
 	 * @param this
@@ -90,7 +79,7 @@ public class Festival {
 
 	public int nombreDePlaceTotal(){
 		int places=0;
-		for (int i : Places) {
+		for (int i : chPlaces) {
 			places+=i;
 
 		}

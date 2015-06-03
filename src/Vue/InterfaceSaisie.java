@@ -125,7 +125,7 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 			date2 = new Date(convertJour[comboDateFJour.getSelectedIndex()],convertMois[comboDateFMois.getSelectedIndex()],2015);
 			if (date1.precede(date2) == 1 || date1.precede(date2) == 0){
 			Festival festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()));
-			System.out.println(festival.toString(festival));
+			System.out.println(festival.toString());
 			}//if
 			else{
 			JOptionPane.showMessageDialog(this, 
