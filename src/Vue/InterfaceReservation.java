@@ -59,7 +59,6 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 					panelReservationFestival.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
 					setBackground(new Color(208,237,189));
 					this.add(panelReservationFestival);
-					
 					}
 				}
 			
@@ -90,10 +89,6 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 			this.validate();
 			this.repaint();
 	}
-	
-	
-
-
 	@Override
 	public void actionPerformed(ActionEvent parEvt) {
 		

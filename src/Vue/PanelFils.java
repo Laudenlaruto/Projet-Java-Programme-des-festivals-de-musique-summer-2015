@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -12,8 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
-import javax.swing.table.TableCellRenderer;
 
+import Fichier.Fichier;
 import Modele.Date;
 import Modele.ExceptionDate;
 import Modele.Festival;
@@ -25,6 +26,7 @@ import Modele.Programme;
  *
  */
 public class PanelFils extends JPanel implements ActionListener{
+	File file = new File("Programme");
 	private JMenuItem initMenu = new JMenuItem("Initialisation",'I');
 	private JMenuItem progMenu = new JMenuItem("Programme",'P');
 	private JMenuItem reservMenu = new JMenuItem("Réservation",'R');
@@ -32,24 +34,10 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JPanel panelMenu = new JPanel();
 	private JPanel panelInterface = new JPanel();
 	private JTable chTableInterfaceAffichage = new JTable();
-	private Programme chProgramme;
 	private CardLayout diapoInterface = new CardLayout();
 	private InterfaceSaisie interfaceSaisie;
 	private InterfaceReservation interfaceReservation;
 	public PanelFils(){
-		//Valeurs
-		chProgramme = new Programme();
-		try {
-		Date[] dates={new Date(2,7,2015),new Date(31, 7, 2015)};
-		
-		int[] places = {500,40};
-		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places,"Images/001.jpg", 50));
-		
-		}
-		catch (ExceptionDate e){
-			e.printStackTrace();}
-		
-		
 		
 		//Préparation du Menu
 		initMenu.addActionListener(this);
@@ -71,9 +59,15 @@ public class PanelFils extends JPanel implements ActionListener{
 		add(panelMenu,BorderLayout.NORTH);
 		//Cardlayout
 		panelInterface.setLayout(diapoInterface);
+		//Intilisation du programme avec fichier 
+		Programme programme;
+		programme = (Programme)Fichier.lecture(file);
+		
+		//Fichier.reset(file);
+		
 		//Table affichage
 		chTableInterfaceAffichage.setRowHeight(50);
-		chTableInterfaceAffichage.setModel(new InterfaceAffichage(chProgramme));
+		chTableInterfaceAffichage.setModel(new InterfaceAffichage(programme));
 		chTableInterfaceAffichage.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		for(int i=0; i<Festival.Genres.length;i++){
 			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
@@ -85,13 +79,13 @@ public class PanelFils extends JPanel implements ActionListener{
 		
 	
 		// Interface Réservation
-		 interfaceReservation = new InterfaceReservation(chProgramme);
+		 interfaceReservation = new InterfaceReservation(programme);
 		
 		diapoInterface.addLayoutComponent(interfaceReservation, "InterfaceRéservation");
 		panelInterface.add(interfaceReservation);
 		
 		// Interface de saisie
-				interfaceSaisie= new InterfaceSaisie(chProgramme,chTableInterfaceAffichage,interfaceReservation);
+				interfaceSaisie= new InterfaceSaisie(programme,chTableInterfaceAffichage,interfaceReservation);
 				diapoInterface.addLayoutComponent(interfaceSaisie, "InterfaceSaisie");
 				panelInterface.add(interfaceSaisie);
 		

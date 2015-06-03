@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Fichier.Fichier;
 import Modele.Date;
 import Modele.Festival;
 
@@ -22,6 +24,7 @@ public class InterfaceReservationFestival extends JPanel implements ActionListen
 	JLabel labelNombreDePlaces;
 	JButton boutonReservation;
 	Festival chFestival ;
+	File file = new File("Programme");
 	public InterfaceReservationFestival(Festival festival){
 		chFestival = festival;
 		labelNomFestival = new JLabel("Festival " + festival.getChNom());
@@ -62,6 +65,7 @@ public class InterfaceReservationFestival extends JPanel implements ActionListen
 			chFestival.reservationFestival((Date)boxDates.getSelectedItem());
 			labelNombreDePlaces.setText("Places : "+chFestival.nombreDePlace(dateSelectionne));
 			JOptionPane.showMessageDialog(this, "La réservation à bien été effectuée","Confirmation",JOptionPane.PLAIN_MESSAGE);
+			//Fichier.ecriture(file, chFestival); TODO mettre Programme
 		}
 	}
 }

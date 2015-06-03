@@ -17,8 +17,7 @@ public class FestivalHelper {
 	public static List<Festival> extractListFestival(HashMap<String,ArrayList<Festival>> map,String Genre){
 		if (!map.isEmpty()){
 			for (String Cle : map.keySet()) {
-				
-				if (Cle == Genre){
+				if (Cle.equalsIgnoreCase(Genre)){
 						return map.get(Cle);
 				}
 			}

@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import Fichier.Fichier;
 import Modele.Date;
 import Modele.ExceptionDate;
 import Modele.Festival;
@@ -59,11 +61,12 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	private JComboBox comboPrix = new JComboBox(tabPrix);
 	//JButton
 	private JButton boutonCree = new JButton("Créer le festival !");
-	
+	//ChampLocal
 	private JTable chTableLocal;
 	private Programme chProgramme;
 	private InterfaceReservation chInterfaceResv;
-	
+	//Fichier
+	File file = new File("Programme");
 	
 	public InterfaceSaisie(Programme parProgramme, JTable tabAff, InterfaceReservation interfaceReservation){
 		chProgramme = parProgramme;
@@ -160,13 +163,10 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 					chTableLocal.getColumnModel().getColumn(i).setPreferredWidth(400);
 					}
 				chInterfaceResv.ajoutFestival(festival);
-				// TODO ajouter la sauvergarde dans le fichier
+				Fichier.ecriture(file, chProgramme);
 				}//if
 			else{
-			JOptionPane.showMessageDialog(this, 
-			         "La date est invalide ! \n La date de début précède la date de fin",
-			         " Erreur ! ",
-			         JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(this, "La date est invalide ! \n La date de début précède la date de fin", " Erreur ! ",JOptionPane.WARNING_MESSAGE);
 			}//else
 			
 		}//try

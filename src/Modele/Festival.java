@@ -1,11 +1,14 @@
 package Modele;
+
+import java.io.Serializable;
+
 /**
  * Classe qui definit les festivals avec un nom, un genre, un tableau de Date, un lieu et un tableau de places
  * 
  * @author Benjamin, Loïc
  *
  */
-public class Festival {
+public class Festival implements Serializable {
 
 	private String chNom;
 	private String chGenre;
@@ -93,7 +96,7 @@ public class Festival {
 		int i=0;
 		for (Date date : chDate) {
 			if (date.equals(parDate))
-					chPlaces[i]--;
+					this.chPlaces[i]=chPlaces[i]-1;
 			i++;
 			}
 	}
@@ -101,6 +104,7 @@ public class Festival {
 	public String getChNom() {
 		return chNom;
 	}
+	
 	public void setChNom(String chNom) {
 		this.chNom = chNom;
 	}
