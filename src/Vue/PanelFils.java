@@ -15,6 +15,7 @@ import javax.swing.KeyStroke;
 import javax.swing.table.TableCellRenderer;
 
 import Modele.Date;
+import Modele.ExceptionDate;
 import Modele.Festival;
 import Modele.Programme;
 /**
@@ -31,15 +32,21 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JPanel panelMenu = new JPanel();
 	private JPanel panelInterface = new JPanel();
 	private JTable chTableInterfaceAffichage = new JTable();
-	private InterfaceSaisie interfaceSaisie = new InterfaceSaisie();
 	private Programme chProgramme;
 	private CardLayout diapoInterface = new CardLayout();
+	private InterfaceSaisie interfaceSaisie = new InterfaceSaisie(chProgramme);
 	public PanelFils(){
 		//Valeurs
 		chProgramme = new Programme();
-		Date[] dates = {new Date()};
-		int[] places = {500};
-		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places));
+		try {
+		Date[] dates={new Date(2,7,2015),new Date(31, 7, 2015)};
+		
+		int[] places = {500,500};
+		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places,"Images/001.jpg"));
+		
+		}
+		catch (ExceptionDate e){
+			e.printStackTrace();}
 		//Préparation du Menu
 		initMenu.addActionListener(this);
 	    menuBar.add(initMenu);
@@ -71,14 +78,23 @@ public class PanelFils extends JPanel implements ActionListener{
 		
 		diapoInterface.addLayoutComponent(scroll, "InterfaceAffichage");
 		panelInterface.add(scroll,BorderLayout.CENTER);
+		
 		// Interface de saisie
 		diapoInterface.addLayoutComponent(interfaceSaisie, "InterfaceSaisie");
 		panelInterface.add(interfaceSaisie);
-		add(panelInterface);
+		
+		
+	
+		// Interface Réservation
+		InterfaceReservation interfaceReservation = new InterfaceReservation(chProgramme);
+		
+		diapoInterface.addLayoutComponent(interfaceReservation, "InterfaceRéservation");
+		panelInterface.add(interfaceReservation);
+		
 		
 		diapoInterface.show(panelInterface, "InterfaceSaisie");
+		add(panelInterface);
 		panelMenu.setBackground(new Color(208,237,189));
-		
 	} //PanelFils()
 
 	@Override
@@ -93,6 +109,7 @@ public class PanelFils extends JPanel implements ActionListener{
 		}
 		
 		if(parEvt.getSource()==reservMenu){
+			diapoInterface.show(panelInterface, "InterfaceRéservation");
 		}
 	}
 	

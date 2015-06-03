@@ -36,7 +36,7 @@ public class InterfaceAffichage extends DefaultTableModel {
 			if(list !=null){
 				for (Festival festival : list) {
 					if (festival.getChGenre()== Festival.Genres[i]){
-						setValueAt(festival.toString(festival), j, i);
+						setValueAt(festival, j, i);
 						j++;
 					}
 				}

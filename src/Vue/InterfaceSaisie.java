@@ -1,5 +1,6 @@
 package Vue;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -9,10 +10,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Modele.Date;
+import Modele.ExceptionDate;
 import Modele.Festival;
+import Modele.Programme;
 /**
  * Interface de Saisie pour la création d'un festival
  * @author Loïc, Benjamin
@@ -31,21 +36,24 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	//JTextField
 	private JTextField fieldNom = new JTextField(8);
 	private JTextField fieldLieu = new JTextField(8);
-	private JTextField fieldPlace = new JTextField (4);
 	//Tableau
+	String[] tabPlace ={"100","500","1000","2000","4000","8000","16000","50000","100000","200000"};
 	String[] tabMois = {"Juillet","Aout"};
+	int[] convertMois = {7,8};
 	String[] tabJour = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+	int[] convertJour = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
 	//ComboBox
 	private JComboBox comboGenre = new JComboBox(Festival.Genres);
 	private JComboBox comboDateDJour = new JComboBox(tabJour);
 	private JComboBox comboDateDMois = new JComboBox(tabMois);
 	private JComboBox comboDateFJour = new JComboBox(tabJour);
 	private JComboBox comboDateFMois = new JComboBox(tabMois);
+	private JComboBox comboPlace = new JComboBox(tabPlace);
 	//JButton
 	private JButton boutonCree = new JButton("Créer le festival !");
 	
 	
-	public InterfaceSaisie(){
+	public InterfaceSaisie(Programme chProgramme){
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints cont = new GridBagConstraints();
 		cont.insets = new Insets (10,10,10,10); //bordure (haut,gauche,bas droite)
@@ -85,12 +93,13 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 		comboDateFMois.addActionListener(this);
 		cont.gridy=6;cont.gridx=0;cont.gridwidth=2;
 		add(labelPlace,cont);
-		cont.gridx=2;cont.gridwidth=3;
-		add(fieldPlace,cont);
-		fieldPlace.addActionListener(this);
+		cont.gridx=2;cont.gridwidth=1;
+		add(comboPlace,cont);
+		comboPlace.addActionListener(this);
 		cont.gridx=10;cont.gridwidth=0;
 		add(boutonCree,cont);
 		boutonCree.addActionListener(this);
+		this.setBackground(new Color(208,237,189));
 	}
 
 
@@ -98,9 +107,7 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent parEvt){
 		
 		
-		String mois = "Aout";
-		String s = (String) comboDateDMois.getSelectedItem();
-		if (s == mois){
+		if ((String) comboDateDMois.getSelectedItem() == "Aout"){
 				comboDateFMois.setSelectedItem("Aout");
 				comboDateFMois.setEnabled(false);
 		} //if
@@ -108,8 +115,39 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 				comboDateFMois.setEnabled(true);
 		}
 		
+		if (parEvt.getSource() == boutonCree){
+		
+		Date date1;
+		Date date2;
+		if (fieldNom.getText().length() != 0 && fieldLieu.getText().length() != 0){
+		try{
+			date1 = new Date(convertJour[comboDateDJour.getSelectedIndex()],convertMois[comboDateDMois.getSelectedIndex()],2015);
+			date2 = new Date(convertJour[comboDateFJour.getSelectedIndex()],convertMois[comboDateFMois.getSelectedIndex()],2015);
+			if (date1.precede(date2) == 1 || date1.precede(date2) == 0){
+			Festival festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()));
+			System.out.println(festival.toString());
+			}//if
+			else{
+			JOptionPane.showMessageDialog(this, 
+			         "La date est invalide ! \n La date de début précède la date de fin",
+			         " Erreur ! ",
+			         JOptionPane.WARNING_MESSAGE);
+			}//else
+			
+		}//try
+		catch (ExceptionDate e) {
+			e.printStackTrace();
+		}//catch
+		}//if
+		else{
+			JOptionPane.showMessageDialog(this, 
+			         "Veuillez compléter tout les champs",
+			         " Erreur ! ",
+			         JOptionPane.WARNING_MESSAGE);
+		}//else
 		
 		
-	} // actionPerformed()
+	} 
 	
+	}// actionPerformed()
 }
