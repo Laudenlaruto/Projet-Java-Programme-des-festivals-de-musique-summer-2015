@@ -37,15 +37,11 @@ public class PanelFils extends JPanel implements ActionListener{
 		//Valeurs
 		chProgramme = new Programme();
 		try {
-		Date[] dates={new Date(),new Date(31, 8, 2015)};
+		Date[] dates={new Date(2,7,2015),new Date(31, 7, 2015)};
 		
-		int[] places = {500};
-		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places));
-		chProgramme.ajout(new Festival("Unicorn22", "Rock", dates, "Ex", places));
-		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places));
-		chProgramme.ajout(new Festival("Unicorn22", "Rock", dates, "Ex", places));
-		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places));
-		chProgramme.ajout(new Festival("Unicorn22", "Rock", dates, "Ex", places));
+		int[] places = {500,500};
+		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places,"Images/001.jpg"));
+		
 		}
 		catch (ExceptionDate e){
 			e.printStackTrace();}
