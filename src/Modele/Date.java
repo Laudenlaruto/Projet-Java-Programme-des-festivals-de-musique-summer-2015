@@ -118,39 +118,44 @@ public class Date implements Serializable
 	
 	public Date[] intervaleFestival(Date parDate1) throws ExceptionDate{
 		int nbBoucle;
-		Date[] tabDate;
 		if (this.chMois == parDate1.chMois){
 			if(this.chJour == parDate1.chJour){
-				tabDate = new Date[1];
+				Date[] tabDate = new Date[1];
 				tabDate[0]=new Date(this.chJour,parDate1.chMois,2015);
+				
+				return tabDate;
 			}//if
 			else{
 				nbBoucle = parDate1.chJour - this.chJour +1;
-				tabDate = new Date[nbBoucle];
+				Date[] tabDate = new Date[nbBoucle];
 				int j = 0;
-				for (int i=this.chJour; i < parDate1.chJour; i++){
+				for (int i=this.chJour; i <= parDate1.chJour; i++){
 					tabDate[j]=new Date(i,this.chMois,2015);
 					j++;
 				}//for
+				
+				return tabDate;
 			}//else
 		}//if
 		else
 		{
 			int j = 0;
-			nbBoucle = dernierJourDuMois(this.chJour,2015) - this.chJour +1;
+			nbBoucle = dernierJourDuMois(this.chMois,2015) - this.chJour +1;
 			int nbBoucle2 = parDate1.chJour;
-			tabDate = new Date[nbBoucle+nbBoucle2];
-			for (int i = this.chJour;i < dernierJourDuMois(this.chJour,2015);i++){
+			Date[] tabDate = new Date[nbBoucle+nbBoucle2];
+			for (int i = this.chJour;i <= dernierJourDuMois(this.chMois,2015);i++){
 				tabDate[j]=new Date (i,this.chMois,2015);
 				j++;
 			}//for
-			for (int i = 1; i < parDate1.chJour;i++){
+			for (int i = 1; i <= parDate1.chJour;i++){
 				tabDate[j]=new Date (i,parDate1.chMois,2015);
 				j++;
 			}//for
+			
+			return tabDate;
 		}//else
 		
-		return tabDate;
+		
 		
 	}//intervaleFestival()
 	
