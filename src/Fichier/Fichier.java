@@ -10,7 +10,7 @@ import Modele.Programme;
 
 /**
  * Classe qui permet la lecture et l'ecriture dans un fichier
- * @author Benjamin
+ * @author Benjamin, Loïc
  *
  */
 public class Fichier  {
