@@ -23,14 +23,14 @@ public class InterfaceAffichage extends DefaultTableModel {
 	 * @param chProgramme Le programme des festivals
 	 */
 	public InterfaceAffichage(Programme chProgramme){
-		int chNombreDeGenres = Festival.Genres.length-1;
+		int chNombreDeGenres = Festival.Genres.length;
 		setColumnCount(chNombreDeGenres);
 		setRowCount(chProgramme.nombreDeFestivalsParGenre());
 		String [] entete = new String [chNombreDeGenres];
 		for (int i = 0;i<chNombreDeGenres;i++)
 			entete[i]=Festival.Genres[i];
 		setColumnIdentifiers(entete);
-		for (int i = 0; i <= chNombreDeGenres;i++ ){
+		for (int i = 0; i < chNombreDeGenres;i++ ){
 			List<Festival>  list = FestivalHelper.extractListFestival(chProgramme.getChProgramme(),Festival.Genres[i]);	
 			int j = 0;
 			if(list !=null){

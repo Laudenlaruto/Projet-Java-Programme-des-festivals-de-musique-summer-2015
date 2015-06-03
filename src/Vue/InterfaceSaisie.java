@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import Modele.Date;
@@ -26,7 +27,7 @@ import Modele.Programme;
 public class InterfaceSaisie extends JPanel implements ActionListener{
 	
 	//String
-	private String cheminDefaut = new String ("Images/defaut.jpg");
+	private String cheminDefaut = new String ("Images/default.jpg");
 	//JLabel
 	private JLabel labelIni = new JLabel("Initialisez votre festival :");
 	private JLabel labelGenre = new JLabel("Genre :");
@@ -59,8 +60,15 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	//JButton
 	private JButton boutonCree = new JButton("Créer le festival !");
 	
+	private JTable chTableLocal;
+	private Programme chProgramme;
+	private InterfaceReservation chInterfaceResv;
 	
-	public InterfaceSaisie(Programme chProgramme){
+	
+	public InterfaceSaisie(Programme parProgramme, JTable tabAff, InterfaceReservation interfaceReservation){
+		chProgramme = parProgramme;
+		chTableLocal = tabAff;
+		chInterfaceResv = interfaceReservation;
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints cont = new GridBagConstraints();
 		cont.insets = new Insets (10,10,10,10); //bordure (haut,gauche,bas droite)
@@ -146,7 +154,13 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 				else{
 					festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),cheminDefaut,Integer.parseInt(comboPrix.getSelectedItem().toString()));
 				}//else
-				System.out.println(festival);
+				chProgramme.ajout(festival);
+				chTableLocal.setModel(new InterfaceAffichage(chProgramme));
+				for(int i=0; i<Festival.Genres.length;i++){
+					chTableLocal.getColumnModel().getColumn(i).setPreferredWidth(400);
+					}
+				chInterfaceResv.ajoutFestival(festival);
+				// TODO ajouter la sauvergarde dans le fichier
 				}//if
 			else{
 			JOptionPane.showMessageDialog(this, 

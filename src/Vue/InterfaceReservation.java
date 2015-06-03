@@ -24,24 +24,26 @@ import Modele.Programme;
 
 public class InterfaceReservation extends JPanel implements ActionListener {
 
+	BoutonFestival boutonFestival;
+	
 	
 	public InterfaceReservation(Programme chProgramme){
 		int nombreDeFestivals = chProgramme.getChProgramme().size();
 		Float ligneFloat = new Float(nombreDeFestivals/4);
 		int nombreDeLigne = ligneFloat.intValue();// A tester
 		GridLayout gridLayout = new GridLayout(nombreDeLigne,4);
-		BoutonFestival boutonFestival;
 		int chNombreDeGenres = Festival.Genres.length-1;
 		for (int i = 0; i <= chNombreDeGenres;i++ ){
 			List<Festival>  list = FestivalHelper.extractListFestival(chProgramme.getChProgramme(),Festival.Genres[i]);	
 			if(list !=null){
 				for (Festival festival : list) {
 					JPanel panelReservationFestival = new JPanel();
-					panelReservationFestival.setLayout(gridLayout);
+					this.setLayout(gridLayout);
 					panelReservationFestival.setLayout(new GridBagLayout());
 					GridBagConstraints cont = new GridBagConstraints();
-					JTextArea textFestival = new JTextArea(festival.toString()+"\nIl reste "+festival.nombreDePlaceTotal()+" places");
+					JTextArea textFestival = new JTextArea(festival.toString()+"\n" + festival.getChGenre());
 					textFestival.setEditable(false);
+					textFestival.setBackground(new Color(208,237,189));
 					boutonFestival = new BoutonFestival(festival);
 					boutonFestival.addActionListener(this);
 					JLabel image =  new JLabel(new ImageIcon(festival.getChImagePath()));
@@ -58,11 +60,39 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 					setBackground(new Color(208,237,189));
 					this.add(panelReservationFestival);
 					
+					}
 				}
-			}
 			
+			}
 		}
+		public void ajoutFestival(Festival parFestival){
+			JPanel panelReservationFestival = new JPanel();
+			panelReservationFestival.setLayout(new GridBagLayout());
+			GridBagConstraints cont = new GridBagConstraints();
+			JTextArea textFestival = new JTextArea(parFestival.toString()+"\n" + parFestival.getChGenre());
+			textFestival.setEditable(false);
+			textFestival.setBackground(new Color(208,237,189));
+			boutonFestival = new BoutonFestival(parFestival);
+			boutonFestival.addActionListener(this);
+			JLabel image =  new JLabel(new ImageIcon(parFestival.getChImagePath()));
+			cont.insets = new Insets (10,10,10,10);
+			panelReservationFestival.add(image,cont);
+			cont.gridx=1; 
+			panelReservationFestival.add(textFestival,cont);
+			cont.gridy=1;
+			cont.gridx=0;
+			cont.gridwidth=2;
+			panelReservationFestival.add(boutonFestival,cont);
+			panelReservationFestival.setBackground(new Color(208,237,180));
+			panelReservationFestival.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
+			setBackground(new Color(208,237,189));
+			this.add(panelReservationFestival);
+			this.validate();
+			this.repaint();
 	}
+	
+	
+
 
 	@Override
 	public void actionPerformed(ActionEvent parEvt) {
@@ -79,5 +109,5 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 		dial.setVisible(true);
 		
 	}
-
+	
 }

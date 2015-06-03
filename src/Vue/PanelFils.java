@@ -34,7 +34,8 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JTable chTableInterfaceAffichage = new JTable();
 	private Programme chProgramme;
 	private CardLayout diapoInterface = new CardLayout();
-	private InterfaceSaisie interfaceSaisie = new InterfaceSaisie(chProgramme);
+	private InterfaceSaisie interfaceSaisie;
+	private InterfaceReservation interfaceReservation;
 	public PanelFils(){
 		//Valeurs
 		chProgramme = new Programme();
@@ -47,6 +48,9 @@ public class PanelFils extends JPanel implements ActionListener{
 		}
 		catch (ExceptionDate e){
 			e.printStackTrace();}
+		
+		
+		
 		//Préparation du Menu
 		initMenu.addActionListener(this);
 	    menuBar.add(initMenu);
@@ -71,7 +75,7 @@ public class PanelFils extends JPanel implements ActionListener{
 		chTableInterfaceAffichage.setRowHeight(50);
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(chProgramme));
 		chTableInterfaceAffichage.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		for(int i=0; i<Festival.Genres.length-1;i++){
+		for(int i=0; i<Festival.Genres.length;i++){
 			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
 			}
 		JScrollPane scroll = new JScrollPane(chTableInterfaceAffichage);
@@ -79,24 +83,26 @@ public class PanelFils extends JPanel implements ActionListener{
 		diapoInterface.addLayoutComponent(scroll, "InterfaceAffichage");
 		panelInterface.add(scroll,BorderLayout.CENTER);
 		
-		// Interface de saisie
-		diapoInterface.addLayoutComponent(interfaceSaisie, "InterfaceSaisie");
-		panelInterface.add(interfaceSaisie);
-		
-		
 	
 		// Interface Réservation
-		InterfaceReservation interfaceReservation = new InterfaceReservation(chProgramme);
+		 interfaceReservation = new InterfaceReservation(chProgramme);
 		
 		diapoInterface.addLayoutComponent(interfaceReservation, "InterfaceRéservation");
 		panelInterface.add(interfaceReservation);
 		
+		// Interface de saisie
+				interfaceSaisie= new InterfaceSaisie(chProgramme,chTableInterfaceAffichage,interfaceReservation);
+				diapoInterface.addLayoutComponent(interfaceSaisie, "InterfaceSaisie");
+				panelInterface.add(interfaceSaisie);
 		
+		// PanelInterface
 		diapoInterface.show(panelInterface, "InterfaceSaisie");
 		add(panelInterface);
 		panelMenu.setBackground(new Color(208,237,189));
 	} //PanelFils()
-
+	public void setModele(Programme chProgramme){
+		chTableInterfaceAffichage.setModel(new InterfaceAffichage(chProgramme));
+	}
 	@Override
 	public void actionPerformed(ActionEvent parEvt) {
 		

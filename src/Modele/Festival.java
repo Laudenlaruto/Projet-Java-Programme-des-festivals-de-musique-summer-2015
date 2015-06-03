@@ -58,11 +58,11 @@ public class Festival {
 	public String toString(){
 		if(this.chDate[0].getChMois()==this.chDate[this.chDate.length-1].getChMois()){
 			if(this.chDate[0].getChJour()==this.chDate[this.chDate.length-1].getChJour()){
-				return ("le Festival "+chNom+"\naura lieu à "+chLieu+"\nle \n "+chDate[0].toString()+" " +chDate[0].getChMoisAnnee());
+				return ("le Festival "+chNom+" \nAura lieu à "+chLieu+" \nLe "+chDate[0].toString());
 			}
-			return ("le Festival "+chNom+"\naura lieu à "+chLieu+" \ndu "+chDate[0].getChJour()+" au "+chDate[chDate.length-1].getChJour()+" " +chDate[0].getChMoisAnnee());
+			return ("le Festival "+chNom+" \nAura lieu à "+chLieu+" \nDu "+chDate[0].getChJour()+" au "+chDate[chDate.length-1].getChJour()+" " +chDate[0].getChMoisAnnee());
 		}
-		return ("le Festival "+chNom+"\naura lieu à \n"+chLieu+" \ndu "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString());
+		return ("le Festival "+chNom+" \nAura lieu à \n"+chLieu+" \nDu "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString());
 	}
 	/**
 	 * Méthode qui permet de vérifier si il y a des places de libres pour un festivals
