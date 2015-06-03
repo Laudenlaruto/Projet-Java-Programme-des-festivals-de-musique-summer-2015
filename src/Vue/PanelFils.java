@@ -41,7 +41,7 @@ public class PanelFils extends JPanel implements ActionListener{
 		try {
 		Date[] dates={new Date(2,7,2015),new Date(31, 7, 2015)};
 		
-		int[] places = {500,500};
+		int[] places = {500,40};
 		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places,"Images/001.jpg", 50));
 		
 		}

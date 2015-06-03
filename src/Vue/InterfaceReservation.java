@@ -75,7 +75,6 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 		dial.setSize(370,240);
 		dial.setLocation(positionSouris);
 		dial.setTitle("Réservation");
-		
 		dial.setContentPane(new InterfaceReservationFestival(festival));
 		dial.setVisible(true);
 		

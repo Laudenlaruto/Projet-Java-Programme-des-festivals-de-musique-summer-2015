@@ -70,15 +70,15 @@ public class Festival {
 	 * @param parMois
 	 * @return
 	 */
-	public boolean estReservable(int parJour, int parMois){
-		for (int i = 0;i< chDate.length;i++){
-			if (chDate[i].getChMois() == parMois && chDate[i].getChJour()== parJour){
-				if (chPlaces[i] != 0){
-					return true;
-				}
+	public int nombreDePlace(Date parDate){
+		int i =0;
+		for (Date date : chDate) {
+			if (date.equals(parDate)){
+					return chPlaces[i];
 			}
+			i++;
 		}
-		return false;
+		return 0;
 	}
 
 	public int nombreDePlaceTotal(){
@@ -88,6 +88,14 @@ public class Festival {
 
 		}
 		return places;
+	}
+	public void reservationFestival(Date parDate){
+		int i=0;
+		for (Date date : chDate) {
+			if (date.equals(parDate))
+					chPlaces[i]--;
+			i++;
+			}
 	}
 	//Getter ----------------------
 	public String getChNom() {
@@ -112,7 +120,37 @@ public class Festival {
 	public String getChImagePath() {
 		return chImagePath;
 	}
+	public int getChPlace(int i){
+		return chPlaces[i];
+	}
+	public Date getchDate(int i){
+		return chDate[i];
+	}
 	public void setChImagePath(String chImagePath) {
 		this.chImagePath = chImagePath;
+	}
+
+	public int getChPrix() {
+		return chPrix;
+	}
+
+	public void setChPrix(int chPrix) {
+		this.chPrix = chPrix;
+	}
+
+	public Date[] getChDate() {
+		return chDate;
+	}
+
+	public void setChDate(Date[] chDate) {
+		this.chDate = chDate;
+	}
+
+	public int[] getChPlaces() {
+		return chPlaces;
+	}
+
+	public void setChPlaces(int[] chPlaces) {
+		this.chPlaces = chPlaces;
 	}
 }
