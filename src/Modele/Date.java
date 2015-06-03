@@ -1,5 +1,6 @@
 package Modele;
- import java.io.Serializable;
+
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
@@ -68,8 +69,7 @@ public class Date implements Serializable
 	 * @param parAn l'année pour lequel on cherche le dernier jour du mois
 	 * @return le dernier jour du mois : int
 	 */
-	public static int dernierJourDuMois(int parMois, int parAn)
-	{
+	public static int dernierJourDuMois(int parMois, int parAn){
 		switch(parMois)
 			{
 			case 4:
@@ -90,8 +90,7 @@ public class Date implements Serializable
 	 * Méthode qui verifie si la date est bien dans le calendrier grégorien
 	 * @return boolean
 	 */
-	public boolean estValide()
-	{
+	public boolean estValide(){
 		if (chAn<1582)
 			return false;
 		if (chMois<1 || chMois >12)
@@ -100,6 +99,60 @@ public class Date implements Serializable
 			return false;
 		return true;
 	}//estValide()
+	
+	public int precede(Date parDate){
+		if(this.chAn > parDate.chAn)
+			return -1;
+		if(this.chAn < parDate.chAn)
+			return 1;
+			if(this.chMois > parDate.chMois)
+				return -1;
+			if(this.chMois < parDate.chMois)
+				return 1;
+				if(this.chJour > parDate.chJour)
+				return -1;
+				if(this.chJour < parDate.chJour)
+				return 1;
+	return 0;
+	}//precede()
+	
+	public Date[] intervaleFestival(Date parDate1) throws ExceptionDate{
+		int nbBoucle;
+		Date[] tabDate;
+		if (this.chMois == parDate1.chMois){
+			if(this.chJour == parDate1.chJour){
+				tabDate = new Date[1];
+				tabDate[0]=new Date(this.chJour,parDate1.chMois,2015);
+			}//if
+			else{
+				nbBoucle = parDate1.chJour - this.chJour +1;
+				tabDate = new Date[nbBoucle];
+				int j = 0;
+				for (int i=this.chJour; i < parDate1.chJour; i++){
+					tabDate[j]=new Date(i,this.chMois,2015);
+					j++;
+				}//for
+			}//else
+		}//if
+		else
+		{
+			int j = 0;
+			nbBoucle = dernierJourDuMois(this.chJour,2015) - this.chJour +1;
+			int nbBoucle2 = parDate1.chJour;
+			tabDate = new Date[nbBoucle+nbBoucle2];
+			for (int i = this.chJour;i < dernierJourDuMois(this.chJour,2015);i++){
+				tabDate[j]=new Date (i,this.chMois,2015);
+				j++;
+			}//for
+			for (int i = 1; i < parDate1.chJour;i++){
+				tabDate[j]=new Date (i,parDate1.chMois,2015);
+				j++;
+			}//for
+		}//else
+		
+		return tabDate;
+		
+	}//intervaleFestival()
 	
 	// Getter ---------------------------------------
 	public int getChJour() {

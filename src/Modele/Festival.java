@@ -11,8 +11,12 @@ public class Festival {
 	private String chGenre;
 	private Date chDate[];
 	private String chLieu;
+<<<<<<< HEAD
 	private int Places[];
 	private String chImagePath;
+=======
+	private int chPlaces[];
+>>>>>>> branch 'InterfaceSaisie2' of https://github.com/Laudenlaruto/Projet-Java-Programme-des-festivals-de-musique-summer-2015.git
 	public static final String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
 	/**
 	 * 
@@ -22,14 +26,37 @@ public class Festival {
 	 * @param chLieu
 	 * @param Places
 	 */
+<<<<<<< HEAD
 	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces,String parImagePath) {
+=======
+	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces){
+>>>>>>> branch 'InterfaceSaisie2' of https://github.com/Laudenlaruto/Projet-Java-Programme-des-festivals-de-musique-summer-2015.git
 		chNom = parNom;
 		chGenre = parGenre;
 		chDate = parDate;
 		chLieu = parLieu;
+<<<<<<< HEAD
 		Places = parPlaces;
 		chImagePath = parImagePath;
 	}
+=======
+		chPlaces = parPlaces;
+	}//Festival()
+	
+	public Festival(String parNom, String parGenre, Date parDate1, Date parDate2, String parLieu, int parPlace) throws ExceptionDate{ 
+		chNom = parNom;
+		chGenre = parGenre;
+		chLieu = parLieu;
+		Date[] tabDate = parDate1.intervaleFestival(parDate2);
+		int[] tabPlace = new int[tabDate.length];
+		int place = parPlace;
+		for (int i = 0; i < tabDate.length; i++){
+			tabPlace[i]=place;
+		}//for
+		chDate = tabDate;
+		chPlaces = tabPlace;
+	}//Festival()
+>>>>>>> branch 'InterfaceSaisie2' of https://github.com/Laudenlaruto/Projet-Java-Programme-des-festivals-de-musique-summer-2015.git
 	/**
 	 * Méthode qui renvoie un string par rapport au jour de début et de fin du festival
 	 * @param this
@@ -53,18 +80,19 @@ public class Festival {
 	public boolean estReservable(int parJour, int parMois){
 		for (int i = 0;i< chDate.length;i++){
 			if (chDate[i].getChMois() == parMois && chDate[i].getChJour()== parJour){
-				if (Places[i] != 0){
+				if (chPlaces[i] != 0){
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-	
+
 	public int nombreDePlaceTotal(){
 		int places=0;
 		for (int i : Places) {
 			places+=i;
+
 		}
 		return places;
 	}
