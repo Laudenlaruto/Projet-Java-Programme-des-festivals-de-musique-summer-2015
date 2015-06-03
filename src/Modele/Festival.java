@@ -30,12 +30,12 @@ public class Festival {
 	}
 	/**
 	 * Méthode qui renvoie un string par rapport au jour de début et de fin du festival
-	 * @param parFestival
+	 * @param this
 	 * @return
 	 */
-	public String toString(Festival parFestival){
-		if(parFestival.chDate[0].getChMois()==parFestival.chDate[parFestival.chDate.length-1].getChMois()){
-			if(parFestival.chDate[0].getChJour()==parFestival.chDate[parFestival.chDate.length-1].getChJour()){
+	public String toString(){
+		if(this.chDate[0].getChMois()==this.chDate[this.chDate.length-1].getChMois()){
+			if(this.chDate[0].getChJour()==this.chDate[this.chDate.length-1].getChJour()){
 				return ("le Festival \n "+chNom+"\n aura lieu à "+chLieu+" \n le \n "+chDate[0].toString());
 			}
 			return ("le Festival \n "+chNom+"\n aura lieu à "+chLieu+" \n du \n "+chDate[0].getChJour()+"au"+chDate[chDate.length-1].getChJour());

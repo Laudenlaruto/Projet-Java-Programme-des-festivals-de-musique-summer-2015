@@ -14,6 +14,7 @@ import javax.swing.KeyStroke;
 import javax.swing.table.TableCellRenderer;
 
 import Modele.Date;
+import Modele.ExceptionDate;
 import Modele.Festival;
 import Modele.Programme;
 /**
@@ -35,9 +36,19 @@ public class PanelFils extends JPanel implements ActionListener{
 	public PanelFils(){
 		//Valeurs
 		chProgramme = new Programme();
-		Date[] dates = {new Date()};
+		try {
+		Date[] dates={new Date(),new Date(31, 8, 2015)};
+		
 		int[] places = {500};
 		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places));
+		chProgramme.ajout(new Festival("Unicorn22", "Rock", dates, "Ex", places));
+		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places));
+		chProgramme.ajout(new Festival("Unicorn22", "Rock", dates, "Ex", places));
+		chProgramme.ajout(new Festival("Unicorn", "Pop", dates, "Ex", places));
+		chProgramme.ajout(new Festival("Unicorn22", "Rock", dates, "Ex", places));
+		}
+		catch (ExceptionDate e){
+			e.printStackTrace();}
 		//Préparation du Menu
 		initMenu.addActionListener(this);
 	    menuBar.add(initMenu);
@@ -66,11 +77,12 @@ public class PanelFils extends JPanel implements ActionListener{
 			}
 		JScrollPane scroll = new JScrollPane(chTableInterfaceAffichage);
 		//add(scroll,BorderLayout.CENTER);
+		
+		//add(interfaceSaisie);
+		InterfaceReservation ir = new InterfaceReservation(chProgramme);
+		add(ir);
+		
 		panelMenu.setBackground(new Color(208,237,189));
-		add(interfaceSaisie);
-		
-		
-		
 	} //PanelFils()
 
 	@Override
