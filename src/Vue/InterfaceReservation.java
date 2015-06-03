@@ -5,13 +5,13 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -66,9 +66,18 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent parEvt) {
+		
 		BoutonFestival boutonFestival = (BoutonFestival)parEvt.getSource();
 		Festival festival = boutonFestival.getFestival();
 		JDialog dial = new JDialog();
+		dial.setModal(true);
+		Point positionSouris = getMousePosition();
+		dial.setSize(370,240);
+		dial.setLocation(positionSouris);
+		dial.setTitle("Réservation");
+		
+		dial.setContentPane(new InterfaceReservationFestival(festival));
+		dial.setVisible(true);
 		
 	}
 
