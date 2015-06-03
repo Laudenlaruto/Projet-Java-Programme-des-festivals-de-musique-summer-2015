@@ -11,7 +11,7 @@ public class Festival {
 	private String chGenre;
 	private Date chDate[];
 	private String chLieu;
-	private int Places[];
+	private int chPlaces[];
 	public static final String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
 	/**
 	 * 
@@ -21,13 +21,27 @@ public class Festival {
 	 * @param chLieu
 	 * @param Places
 	 */
-	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces) {
+	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces){
 		chNom = parNom;
 		chGenre = parGenre;
 		chDate = parDate;
 		chLieu = parLieu;
-		Places = parPlaces;
-	}
+		chPlaces = parPlaces;
+	}//Festival()
+	
+	public Festival(String parNom, String parGenre, Date parDate1, Date parDate2, String parLieu, int parPlace) throws ExceptionDate{ 
+		chNom = parNom;
+		chGenre = parGenre;
+		chLieu = parLieu;
+		Date[] tabDate = parDate1.intervaleFestival(parDate2);
+		int[] tabPlace = new int[tabDate.length];
+		int place = parPlace;
+		for (int i = 0; i < tabDate.length; i++){
+			tabPlace[i]=place;
+		}//for
+		chDate = tabDate;
+		chPlaces = tabPlace;
+	}//Festival()
 	/**
 	 * Méthode qui renvoie un string par rapport au jour de début et de fin du festival
 	 * @param parFestival
@@ -51,7 +65,7 @@ public class Festival {
 	public boolean estReservable(int parJour, int parMois){
 		for (int i = 0;i< chDate.length;i++){
 			if (chDate[i].getChMois() == parMois && chDate[i].getChJour()== parJour){
-				if (Places[i] != 0){
+				if (chPlaces[i] != 0){
 					return true;
 				}
 			}
@@ -64,7 +78,7 @@ public class Festival {
 	 */
 	public boolean estComplet(){
 		for(int i =0;i<chDate.length;i++){
-			if(Places[i] != 0){
+			if(chPlaces[i] != 0){
 				return false;
 			}
 		}

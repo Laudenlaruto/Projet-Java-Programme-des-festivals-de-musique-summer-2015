@@ -29,8 +29,8 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JMenuBar menuBar = new JMenuBar();
 	private JPanel panelMenu = new JPanel();
 	private JTable chTableInterfaceAffichage = new JTable();
-	private InterfaceSaisie interfaceSaisie = new InterfaceSaisie();
 	private Programme chProgramme;
+	private InterfaceSaisie interfaceSaisie = new InterfaceSaisie(chProgramme);
 	
 	public PanelFils(){
 		//Valeurs
