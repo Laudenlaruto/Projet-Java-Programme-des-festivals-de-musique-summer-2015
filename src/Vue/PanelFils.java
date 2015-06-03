@@ -1,6 +1,7 @@
 package Vue;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,10 +29,11 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JMenuItem reservMenu = new JMenuItem("Réservation",'R');
 	private JMenuBar menuBar = new JMenuBar();
 	private JPanel panelMenu = new JPanel();
+	private JPanel panelInterface = new JPanel();
 	private JTable chTableInterfaceAffichage = new JTable();
 	private InterfaceSaisie interfaceSaisie = new InterfaceSaisie();
 	private Programme chProgramme;
-	
+	private CardLayout diapoInterface = new CardLayout();
 	public PanelFils(){
 		//Valeurs
 		chProgramme = new Programme();
@@ -56,8 +58,9 @@ public class PanelFils extends JPanel implements ActionListener{
 	    panelMenu.setLayout(new BorderLayout());
 		panelMenu.add(menuBar,BorderLayout.WEST);
 		add(panelMenu,BorderLayout.NORTH);
-		
-		
+		//Cardlayout
+		panelInterface.setLayout(diapoInterface);
+		//Table affichage
 		chTableInterfaceAffichage.setRowHeight(50);
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(chProgramme));
 		chTableInterfaceAffichage.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -65,11 +68,16 @@ public class PanelFils extends JPanel implements ActionListener{
 			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
 			}
 		JScrollPane scroll = new JScrollPane(chTableInterfaceAffichage);
-		//add(scroll,BorderLayout.CENTER);
+		
+		diapoInterface.addLayoutComponent(scroll, "InterfaceAffichage");
+		panelInterface.add(scroll,BorderLayout.CENTER);
+		// Interface de saisie
+		diapoInterface.addLayoutComponent(interfaceSaisie, "InterfaceSaisie");
+		panelInterface.add(interfaceSaisie);
+		add(panelInterface);
+		
+		diapoInterface.show(panelInterface, "InterfaceSaisie");
 		panelMenu.setBackground(new Color(208,237,189));
-		add(interfaceSaisie);
-		
-		
 		
 	} //PanelFils()
 
@@ -77,9 +85,11 @@ public class PanelFils extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent parEvt) {
 		
 		if(parEvt.getSource()==initMenu){
+			diapoInterface.show(panelInterface, "InterfaceSaisie");
 		}
 		
 		if(parEvt.getSource()==progMenu){
+			diapoInterface.show(panelInterface, "InterfaceAffichage");
 		}
 		
 		if(parEvt.getSource()==reservMenu){
