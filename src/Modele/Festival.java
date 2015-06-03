@@ -13,6 +13,7 @@ public class Festival {
 	private String chLieu;
 	private String chImagePath;
 	private int chPlaces[];
+	private int chPrix;
 	public static final String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
 	/**
 	 * 
@@ -23,7 +24,7 @@ public class Festival {
 	 * @param Places
 	 */
 
-	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces,String parImagePath) {
+	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces, String parImagePath, int parPrix) {
 
 		chNom = parNom;
 		chGenre = parGenre;
@@ -31,9 +32,10 @@ public class Festival {
 		chLieu = parLieu;
 		chImagePath = parImagePath;
 		chPlaces = parPlaces;
+		chPrix = parPrix;
 	}//Festival()
 	
-	public Festival(String parNom, String parGenre, Date parDate1, Date parDate2, String parLieu, int parPlace) throws ExceptionDate{ 
+	public Festival(String parNom, String parGenre, Date parDate1, Date parDate2, String parLieu, int parPlace, String parImagePath, int parPrix) throws ExceptionDate{ 
 		chNom = parNom;
 		chGenre = parGenre;
 		chLieu = parLieu;
@@ -45,6 +47,8 @@ public class Festival {
 		}//for
 		chDate = tabDate;
 		chPlaces = tabPlace;
+		chPrix = parPrix;
+		chImagePath = parImagePath;
 	}//Festival()
 	/**
 	 * Méthode qui renvoie un string par rapport au jour de début et de fin du festival

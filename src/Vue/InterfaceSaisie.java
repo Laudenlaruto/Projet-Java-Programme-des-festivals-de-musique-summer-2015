@@ -25,6 +25,8 @@ import Modele.Programme;
  */
 public class InterfaceSaisie extends JPanel implements ActionListener{
 	
+	//String
+	private String cheminDefaut = new String ("Images/defaut.jpg");
 	//JLabel
 	private JLabel labelIni = new JLabel("Initialisez votre festival :");
 	private JLabel labelGenre = new JLabel("Genre :");
@@ -33,15 +35,19 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	private JLabel labelDateD = new JLabel("Date de début :");
 	private JLabel labelDateF = new JLabel("Date de fin :");
 	private JLabel labelPlace = new JLabel("Place disponible :");
+	private JLabel labelImagePath = new JLabel("Chemin de l'image :");
+	private JLabel labelPrix = new JLabel("Prix :");
 	//JTextField
+	private JTextField fieldImagePath = new JTextField("(Optionnel)",8);
 	private JTextField fieldNom = new JTextField(8);
 	private JTextField fieldLieu = new JTextField(8);
 	//Tableau
-	String[] tabPlace ={"100","500","1000","2000","4000","8000","16000","50000","100000","200000"};
-	String[] tabMois = {"Juillet","Aout"};
-	int[] convertMois = {7,8};
-	String[] tabJour = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
-	int[] convertJour = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
+	private String[] tabPlace ={"100","500","1000","2000","4000","8000","16000","50000","100000","200000"};
+	private String[] tabMois = {"Juillet","Aout"};
+	private int[] convertMois = {7,8};
+	private String[] tabJour = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+	private int[] convertJour = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
+	private String[] tabPrix ={"5","10","25","50","100"};
 	//ComboBox
 	private JComboBox comboGenre = new JComboBox(Festival.Genres);
 	private JComboBox comboDateDJour = new JComboBox(tabJour);
@@ -49,6 +55,7 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	private JComboBox comboDateFJour = new JComboBox(tabJour);
 	private JComboBox comboDateFMois = new JComboBox(tabMois);
 	private JComboBox comboPlace = new JComboBox(tabPlace);
+	private JComboBox comboPrix = new JComboBox(tabPrix);
 	//JButton
 	private JButton boutonCree = new JButton("Créer le festival !");
 	
@@ -75,6 +82,11 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 		cont.gridx=1;cont.gridy=3;
 		add(comboGenre,cont);
 		comboGenre.addActionListener(this);
+		cont.gridx=2;
+		add(labelPrix,cont);
+		cont.gridx=3;
+		add(comboPrix,cont);
+		comboPrix.addActionListener(this);
 		cont.gridx=0;cont.gridy=4;cont.gridwidth=2;
 		add(labelDateD,cont);
 		cont.gridx=2;cont.gridy=4;cont.gridwidth=1;cont.fill = GridBagConstraints.VERTICAL;
@@ -91,7 +103,11 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 		cont.gridx=3;cont.gridwidth=2;
 		add(comboDateFMois,cont);
 		comboDateFMois.addActionListener(this);
-		cont.gridy=6;cont.gridx=0;cont.gridwidth=2;
+		cont.gridy=6;cont.gridx=0;cont.gridwidth =4;
+		add(labelImagePath,cont);
+		cont.gridx=2;
+		add(fieldImagePath,cont);
+		cont.gridy=7;cont.gridx=0;cont.gridwidth=2;
 		add(labelPlace,cont);
 		cont.gridx=2;cont.gridwidth=1;
 		add(comboPlace,cont);
@@ -124,9 +140,13 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 			date1 = new Date(convertJour[comboDateDJour.getSelectedIndex()],convertMois[comboDateDMois.getSelectedIndex()],2015);
 			date2 = new Date(convertJour[comboDateFJour.getSelectedIndex()],convertMois[comboDateFMois.getSelectedIndex()],2015);
 			if (date1.precede(date2) == 1 || date1.precede(date2) == 0){
-			Festival festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()));
-			System.out.println(festival.toString());
-			}//if
+				if (!fieldImagePath.getText().equals("(Optionnel)")){
+					Festival festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),fieldImagePath.getText(),Integer.parseInt(comboPrix.getSelectedItem().toString()));
+				}
+				else{
+					Festival festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),cheminDefaut,Integer.parseInt(comboPrix.getSelectedItem().toString()));
+				}
+				}//if
 			else{
 			JOptionPane.showMessageDialog(this, 
 			         "La date est invalide ! \n La date de début précède la date de fin",
