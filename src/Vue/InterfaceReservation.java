@@ -25,16 +25,17 @@ import Modele.Programme;
 public class InterfaceReservation extends JPanel implements ActionListener {
 
 	BoutonFestival boutonFestival;
+	Programme chProgramme;
 	
-	
-	public InterfaceReservation(Programme chProgramme){
-		int nombreDeFestivals = chProgramme.getChProgramme().size();
+	public InterfaceReservation(Programme parProgramme){
+		chProgramme = parProgramme;
+		int nombreDeFestivals = parProgramme.getChProgramme().size();
 		Float ligneFloat = new Float(nombreDeFestivals/4);
 		int nombreDeLigne = ligneFloat.intValue();// A tester
 		GridLayout gridLayout = new GridLayout(nombreDeLigne,4);
 		int chNombreDeGenres = Festival.Genres.length-1;
 		for (int i = 0; i <= chNombreDeGenres;i++ ){
-			List<Festival>  list = FestivalHelper.extractListFestival(chProgramme.getChProgramme(),Festival.Genres[i]);	
+			List<Festival>  list = FestivalHelper.extractListFestival(parProgramme.getChProgramme(),Festival.Genres[i]);	
 			if(list !=null){
 				for (Festival festival : list) {
 					JPanel panelReservationFestival = new JPanel();
@@ -100,7 +101,7 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 		dial.setSize(370,240);
 		dial.setLocation(positionSouris);
 		dial.setTitle("Réservation");
-		dial.setContentPane(new InterfaceReservationFestival(festival));
+		dial.setContentPane(new InterfaceReservationFestival(festival,chProgramme));
 		dial.setVisible(true);
 		
 	}

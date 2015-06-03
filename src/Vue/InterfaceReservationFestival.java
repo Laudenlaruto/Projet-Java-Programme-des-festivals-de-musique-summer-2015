@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import Fichier.Fichier;
 import Modele.Date;
 import Modele.Festival;
+import Modele.Programme;
 
 public class InterfaceReservationFestival extends JPanel implements ActionListener {
 	JComboBox<Date> boxDates = new JComboBox<Date>();
@@ -25,7 +26,9 @@ public class InterfaceReservationFestival extends JPanel implements ActionListen
 	JButton boutonReservation;
 	Festival chFestival ;
 	File file = new File("Programme");
-	public InterfaceReservationFestival(Festival festival){
+	private Programme chProgramme;
+	public InterfaceReservationFestival(Festival festival, Programme parProgramme){
+		chProgramme = parProgramme;
 		chFestival = festival;
 		labelNomFestival = new JLabel("Festival " + festival.getChNom());
 		labelPrixFestival = new JLabel("Prix : "+festival.getChPrix()+"€");
@@ -65,7 +68,7 @@ public class InterfaceReservationFestival extends JPanel implements ActionListen
 			chFestival.reservationFestival((Date)boxDates.getSelectedItem());
 			labelNombreDePlaces.setText("Places : "+chFestival.nombreDePlace(dateSelectionne));
 			JOptionPane.showMessageDialog(this, "La réservation à bien été effectuée","Confirmation",JOptionPane.PLAIN_MESSAGE);
-			//Fichier.ecriture(file, chFestival); TODO mettre Programme
+			Fichier.ecriture(file, chProgramme); 
 		}
 	}
 }
