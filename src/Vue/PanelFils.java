@@ -75,7 +75,7 @@ public class PanelFils extends JPanel implements ActionListener{
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(programme));
 		chTableInterfaceAffichage.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		for(int i=0; i<Festival.Genres.length;i++){
-			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
+			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(200);
 			}
 		JScrollPane scrollAffichage = new JScrollPane(chTableInterfaceAffichage);
 		chTableInterfaceAffichage.setEnabled(false);

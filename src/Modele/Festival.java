@@ -50,21 +50,41 @@ public class Festival implements Serializable {
 	}//Festival()
 	
 	/**
-	 * Méthode qui renvoie un string selon le jour de début et le jour fin du festival
+	 * Méthode qui renvoie un string selon le jour de début et le jour fin du festival avec une ecriture en html
 	 * 
 	 * @return String
 	 */
 	
 	public String toString(){
-		if(this.chDate[0].getChMois()==this.chDate[this.chDate.length-1].getChMois()){
-			if(this.chDate[0].getChJour()==this.chDate[this.chDate.length-1].getChJour()){
-				return ("le Festival "+chNom+" \nAura lieu à "+chLieu+" \nLe "+chDate[0].toString());
+		if(this.chDate[0].precede(this.chDate[this.chDate.length-1])==0||this.chDate[0].precede(this.chDate[this.chDate.length-1])==1){
+			if(this.chDate[0].getChMois()==this.chDate[this.chDate.length-1].getChMois()){
+				if(this.chDate[0].getChJour()==this.chDate[this.chDate.length-1].getChJour()){
+					return ("<html>le Festival "+chNom+" <br>Aura lieu à "+chLieu+" <br>Le "+chDate[0].toString()+"</html>");
+				}
+				return ("<html>le Festival "+chNom+" <br>Aura lieu à "+chLieu+" <br>Du "+chDate[0].getChJour()+" au "+chDate[chDate.length-1].getChJour()+" " +chDate[0].getChMoisAnnee()+"</html>");
 			}
-			return ("le Festival "+chNom+" \nAura lieu à "+chLieu+" \nDu "+chDate[0].getChJour()+" au "+chDate[chDate.length-1].getChJour()+" " +chDate[0].getChMoisAnnee());
+			return ("<html> le Festival "+chNom+" <br>Aura lieu à <br>"+chLieu+" <br>Du "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString()+"</html>");
+			}
+		else
+			return null;
 		}
-		return ("le Festival "+chNom+" \nAura lieu à \n"+chLieu+" \nDu "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString());
+	/**
+	 * Méthode qui renvoie un string selon le jour de début et le jour fin du festival
+	 * @return
+	 */
+	public String toStringReservation() {
+		if(this.chDate[0].precede(this.chDate[this.chDate.length-1])==0||this.chDate[0].precede(this.chDate[this.chDate.length-1])==1){
+			if(this.chDate[0].getChMois()==this.chDate[this.chDate.length-1].getChMois()){
+				if(this.chDate[0].getChJour()==this.chDate[this.chDate.length-1].getChJour()){
+					return ("le Festival "+chNom+" \nAura lieu à "+chLieu+" \nLe "+chDate[0].toString());
+				}
+				return ("le Festival "+chNom+" \nAura lieu à "+chLieu+" \nDu "+chDate[0].getChJour()+" au "+chDate[chDate.length-1].getChJour()+" " +chDate[0].getChMoisAnnee());
+			}
+			return ("le Festival "+chNom+" \nAura lieu à \n"+chLieu+" \nDu "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString());
+			}
+		else
+			return "";
 	}
-	
 	/**
 	 * 
 	 * Méthode qui permet de vérifier si il y a des places de libres pour un festival
@@ -172,4 +192,6 @@ public class Festival implements Serializable {
 	public void setChPlaces(int[] chPlaces) {
 		this.chPlaces = chPlaces;
 	}
+
+	
 }

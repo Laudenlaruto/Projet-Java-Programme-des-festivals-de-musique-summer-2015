@@ -48,7 +48,7 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 					this.setLayout(gridLayout);
 					panelReservationFestival.setLayout(new GridBagLayout());
 					GridBagConstraints cont = new GridBagConstraints();
-					JTextArea textFestival = new JTextArea(festival.toString()+"\n" + festival.getChGenre());
+					JTextArea textFestival = new JTextArea(festival.toStringReservation()+"\n" + festival.getChGenre());
 					textFestival.setEditable(false);
 					textFestival.setBackground(new Color(208,237,189));
 					boutonFestival = new BoutonFestival(festival);
