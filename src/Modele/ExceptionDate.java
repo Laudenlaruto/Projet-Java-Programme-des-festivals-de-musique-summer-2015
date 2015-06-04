@@ -3,7 +3,7 @@ package Modele;
 import javax.swing.JOptionPane;
 
 /**
- * Exception pour la classe Date qui verifie:
+ * Classe exception pour la classe Date qui verifie:
  *	Si la date est valide et renvoi le String "Date Invalide"
  * @author Benjamin,loïc
  *

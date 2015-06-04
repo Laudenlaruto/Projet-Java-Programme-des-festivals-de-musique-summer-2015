@@ -18,7 +18,7 @@ import Modele.Date;
 import Modele.Festival;
 import Modele.Programme;
 /**
- * Interface "pop-up" qui s'ouvre quand on presse le bouton réserver d'un festival, permet la réservation du festival souhaité
+ * Classe qui créé une interface "pop-up" qui s'ouvre quand on presse le bouton réserver d'un festival, permet la réservation du festival souhaité
  * @author Benjamin, Loïc
  *
  */

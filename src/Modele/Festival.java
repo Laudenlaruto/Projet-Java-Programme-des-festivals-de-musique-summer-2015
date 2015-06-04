@@ -20,7 +20,7 @@ public class Festival implements Serializable {
 	public static final String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
 	
 	/**
-	 * Constructeur prennant cette fois deux dates et crée l'intervale via la fonction intervaleFestival() de date
+	 * Constructeur prennant deux dates et crée l'intervale via la fonction intervaleFestival() de la classe Date
 	 * 
 	 * @param parNom nom du festival
 	 * @param parGenre genre du festival
@@ -70,7 +70,7 @@ public class Festival implements Serializable {
 		}
 	/**
 	 * Méthode qui renvoie un string selon le jour de début et le jour fin du festival
-	 * @return
+	 * @return  String
 	 */
 	public String toStringReservation() {
 		if(this.chDate[0].precede(this.chDate[this.chDate.length-1])==0||this.chDate[0].precede(this.chDate[this.chDate.length-1])==1){
@@ -83,7 +83,7 @@ public class Festival implements Serializable {
 			return ("le Festival "+chNom+" \nAura lieu à \n"+chLieu+" \nDu "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString());
 			}
 		else
-			return "";
+			return null;
 	}
 	/**
 	 * 

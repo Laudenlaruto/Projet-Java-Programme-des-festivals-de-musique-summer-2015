@@ -24,7 +24,7 @@ import Modele.Festival;
 import Modele.Programme;
 
 /**
- * avec les interfaces de saisie, affichage et réservation
+ * Classe qui créé une interface comportant les interfaces de saisie, affichage et réservation dans un cardlayout
  * @author Loïc, Benjamin
  *
  */
@@ -98,6 +98,10 @@ public class PanelFils extends JPanel implements ActionListener{
 		add(panelInterface);
 		panelMenu.setBackground(new Color(208,237,189));
 	} //PanelFils()
+	/**
+	 * Set le modele pour la table Affichage
+	 * @param chProgramme set le modele par rapport à un programme
+	 */
 	public void setModele(Programme chProgramme){
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(chProgramme));
 	}

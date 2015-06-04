@@ -45,4 +45,7 @@ public class InterfaceAffichage extends DefaultTableModel {
 		}
 		
 	}//InterfaceAffichage
+	public void getColumnModel(){
+		
+	}
 }

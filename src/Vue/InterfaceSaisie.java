@@ -22,7 +22,7 @@ import Modele.ExceptionDate;
 import Modele.Festival;
 import Modele.Programme;
 /**
- * Interface de Saisie pour la création d'un festival organiser par un GridBagLayout
+ * Classe qui créé une interface de Saisie pour la création d'un festival organiser par un GridBagLayout
  * @author Loïc, Benjamin
  *
  */
@@ -67,7 +67,12 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	private InterfaceReservation chInterfaceResv;
 	//Fichier
 	File file = new File("Programme");
-	
+	/**
+	 * Constructeur qui crée l'interface de saisie
+	 * @param parProgramme pour pouvoir enregistré les festivals créés
+	 * @param tabAff pour set le modele de la table après la création d'un festival
+	 * @param interfaceReservation pour ajouter le JPanel après la créatio d'un festival
+	 */
 	public InterfaceSaisie(Programme parProgramme, JTable tabAff, InterfaceReservation interfaceReservation){
 		chProgramme = parProgramme;
 		chTableLocal = tabAff;

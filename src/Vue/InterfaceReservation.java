@@ -70,6 +70,10 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 			
 			}
 		}
+	/**
+	 * Méthode permetant d'ajouté un JPanel d'un festial lorsqu'un festial est crée
+	 * @param parFestival Le festival que l'on veut ajouter dans le JPanel
+	 */
 		public void ajoutFestival(Festival parFestival){
 			JPanel panelReservationFestival = new JPanel();
 			panelReservationFestival.setLayout(new GridBagLayout());

@@ -25,7 +25,7 @@ public class BoutonFestival extends JButton{
 			setBackground(Color.CYAN);
 	}
 	/**
-	 * Retourne le Festival dans le bouton
+	 * Méthode qui retourne le Festival dans le bouton
 	 * 
 	 * @return chFestival Renvoie le festival dans le bouton
 	 */
