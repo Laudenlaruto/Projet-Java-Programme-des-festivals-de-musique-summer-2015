@@ -13,7 +13,7 @@ import Modele.Festival;
 import Modele.FestivalHelper;
 import Modele.Programme;
 /**
- * Classe qui extends DefaultTabelModel qui sert à l'affichage en colomn de tous les festivales par rapport à leur genre
+ * Classe qui extends DefaultTabelModel qui sert à l'affichage en colonne de tous les festivals par rapport à leur genre
  * @author Benjamin, loïc
  *
  */

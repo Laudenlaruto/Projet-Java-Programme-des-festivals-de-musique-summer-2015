@@ -18,7 +18,7 @@ import Modele.Date;
 import Modele.Festival;
 import Modele.Programme;
 /**
- * Interface qui s'ouvre losque que l'on veut reserver un festival
+ * Interface "pop-up" qui s'ouvre quand on presse le bouton réserver d'un festival, permet la réservation du festival souhaité
  * @author Benjamin, Loïc
  *
  */

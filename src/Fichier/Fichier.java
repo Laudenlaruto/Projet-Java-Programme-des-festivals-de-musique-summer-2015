@@ -15,7 +15,7 @@ import Modele.Programme;
  */
 public class Fichier  {
 	/**
-	 *Méthode Lit un fichier et renvoi l'objet lu
+	 * Méthode qui lit un fichier et renvoi l'objet lu
 	 * @param parFichier
 	 * @return l'objet lu
 	 */
@@ -39,6 +39,7 @@ public class Fichier  {
 	}
 		/**
 		 * Méthode qui ecrit dans un fichier donné un objet donné
+		 * 
 		 * @param parFichier
 		 * @param parObject
 		 */
@@ -57,7 +58,7 @@ public class Fichier  {
 			}
 		}
 		/**
-		 *Méthode qui reset un fichier pour pas qu'il y est d'erreur où le fichier serais vide.
+		 *Méthode qui reset un fichier pour éviter l'erreure ou le fichier serait vide.
 		 * @param parFichier
 		 */
 		public static void reset(File parFichier){

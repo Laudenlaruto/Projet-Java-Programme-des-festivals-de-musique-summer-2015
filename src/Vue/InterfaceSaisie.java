@@ -22,7 +22,7 @@ import Modele.ExceptionDate;
 import Modele.Festival;
 import Modele.Programme;
 /**
- * Interface de Saisie pour la création d'un festival
+ * Interface de Saisie pour la création d'un festival organiser par un GridBagLayout
  * @author Loïc, Benjamin
  *
  */
