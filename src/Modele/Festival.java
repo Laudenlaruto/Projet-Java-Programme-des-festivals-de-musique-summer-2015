@@ -37,7 +37,7 @@ public class Festival implements Serializable {
 		chNom = parNom;
 		chGenre = parGenre;
 		chLieu = parLieu;
-		Date[] tabDate = parDate1.intervaleFestival(parDate2);
+		Date[] tabDate = parDate1.intervalleFestival(parDate2);
 		int[] tabPlace = new int[tabDate.length];
 		int place = parPlace;
 		for (int i = 0; i < tabDate.length; i++){

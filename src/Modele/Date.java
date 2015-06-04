@@ -128,7 +128,7 @@ public class Date implements Serializable
 	 * @return Date[], le tableau de date à mettre dans festival
 	 * @throws ExceptionDate Exception qui affiche si la date est non valide
 	 */
-	public Date[] intervaleFestival(Date parDate1) throws ExceptionDate{
+	public Date[] intervalleFestival(Date parDate1) throws ExceptionDate{
 		int nbBoucle;
 		if (this.chMois == parDate1.chMois){
 			if(this.chJour == parDate1.chJour){
