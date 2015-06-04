@@ -1,5 +1,7 @@
 package Vue;
 
+import java.awt.Color;
+
 import javax.swing.JFrame ;
 /**
  * Classe du conteneur principale qui permet l'intenciation de PanelFils,

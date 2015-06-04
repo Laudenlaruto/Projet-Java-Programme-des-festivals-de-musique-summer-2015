@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
+import javax.xml.ws.handler.MessageContext.Scope;
 
 import Fichier.Fichier;
 import Modele.Date;
@@ -35,8 +36,8 @@ public class PanelFils extends JPanel implements ActionListener{
 	private JPanel panelInterface = new JPanel();
 	private JTable chTableInterfaceAffichage = new JTable();
 	private CardLayout diapoInterface = new CardLayout();
-	private InterfaceSaisie interfaceSaisie;
-	private InterfaceReservation interfaceReservation;
+	private InterfaceSaisie chInterfaceSaisie;
+	private InterfaceReservation chInterfaceReservation;
 	public PanelFils(){
 		
 		//Préparation du Menu
@@ -52,19 +53,19 @@ public class PanelFils extends JPanel implements ActionListener{
 	    initMenu.setBackground(new Color(208,237,189));
 	    progMenu.setBackground(new Color(208,237,189));
 	    reservMenu.setBackground(new Color(208,237,189));
+	    
 	    //BorderLayout
 	    this.setLayout(new BorderLayout());
 	    panelMenu.setLayout(new BorderLayout());
 		panelMenu.add(menuBar,BorderLayout.WEST);
 		add(panelMenu,BorderLayout.NORTH);
+		
 		//Cardlayout
 		panelInterface.setLayout(diapoInterface);
 		//Intilisation du programme avec fichier 
 		Programme programme;
 		programme = (Programme)Fichier.lecture(file);
-		
-		//Fichier.reset(file);
-		
+		Fichier.reset(file);
 		//Table affichage
 		chTableInterfaceAffichage.setRowHeight(50);
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(programme));
@@ -72,22 +73,21 @@ public class PanelFils extends JPanel implements ActionListener{
 		for(int i=0; i<Festival.Genres.length;i++){
 			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
 			}
-		JScrollPane scroll = new JScrollPane(chTableInterfaceAffichage);
+		JScrollPane scrollAffichage = new JScrollPane(chTableInterfaceAffichage);
 		
-		diapoInterface.addLayoutComponent(scroll, "InterfaceAffichage");
-		panelInterface.add(scroll,BorderLayout.CENTER);
-		
+		diapoInterface.addLayoutComponent(scrollAffichage, "InterfaceAffichage");
+		panelInterface.add(scrollAffichage,BorderLayout.CENTER);
+		chTableInterfaceAffichage.setBackground(new Color(208,237,189));
 	
 		// Interface Réservation
-		 interfaceReservation = new InterfaceReservation(programme);
-		
-		diapoInterface.addLayoutComponent(interfaceReservation, "InterfaceRéservation");
-		panelInterface.add(interfaceReservation);
+		chInterfaceReservation = new InterfaceReservation(programme);
+		diapoInterface.addLayoutComponent(chInterfaceReservation, "InterfaceRéservation");
+		panelInterface.add(chInterfaceReservation,BorderLayout.CENTER);
 		
 		// Interface de saisie
-				interfaceSaisie= new InterfaceSaisie(programme,chTableInterfaceAffichage,interfaceReservation);
-				diapoInterface.addLayoutComponent(interfaceSaisie, "InterfaceSaisie");
-				panelInterface.add(interfaceSaisie);
+				chInterfaceSaisie= new InterfaceSaisie(programme,chTableInterfaceAffichage,chInterfaceReservation);
+				diapoInterface.addLayoutComponent(chInterfaceSaisie, "InterfaceSaisie");
+				panelInterface.add(chInterfaceSaisie);
 		
 		// PanelInterface
 		diapoInterface.show(panelInterface, "InterfaceSaisie");

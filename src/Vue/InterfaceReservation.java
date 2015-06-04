@@ -58,7 +58,6 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 					panelReservationFestival.add(boutonFestival,cont);
 					panelReservationFestival.setBackground(new Color(208,237,180));
 					panelReservationFestival.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
-					setBackground(new Color(208,237,189));
 					this.add(panelReservationFestival);
 					}
 				}
@@ -95,15 +94,16 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 		
 		BoutonFestival boutonFestival = (BoutonFestival)parEvt.getSource();
 		Festival festival = boutonFestival.getFestival();
-		JDialog dial = new JDialog();
-		dial.setModal(true);
-		Point positionSouris = getMousePosition();
-		dial.setSize(370,240);
-		dial.setLocation(positionSouris);
-		dial.setTitle("Réservation");
-		dial.setContentPane(new InterfaceReservationFestival(festival,chProgramme));
-		dial.setVisible(true);
-		
+		if (festival.nombreDePlaceTotal()!=0){
+			JDialog dial = new JDialog();
+			dial.setModal(true);
+			Point positionSouris = getMousePosition();
+			dial.setSize(370,240);
+			dial.setLocation(positionSouris);
+			dial.setTitle("Réservation");
+			dial.setContentPane(new InterfaceReservationFestival(festival,chProgramme));
+			dial.setVisible(true);
+		}
 	}
 	
 }
