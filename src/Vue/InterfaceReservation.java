@@ -22,6 +22,12 @@ import Modele.Festival;
 import Modele.FestivalHelper;
 import Modele.Programme;
 
+/**
+ * Classe qui présente les festivals dans des JLabel et qui, avec un bouton permet l'ouverture de InterfaceReservationFestival
+ * @author Benjamin, Loïc
+ *
+ */
+
 public class InterfaceReservation extends JPanel implements ActionListener {
 
 	BoutonFestival boutonFestival;

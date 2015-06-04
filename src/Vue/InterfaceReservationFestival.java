@@ -18,7 +18,7 @@ import Modele.Date;
 import Modele.Festival;
 import Modele.Programme;
 /**
- * Interface qui s'ouvre losque que l'on veut reserver un festival
+ * Interface "pop-up" qui s'ouvre quand on presse le bouton réserver d'un festival, permet la réservation du festival souhaité
  * @author Benjamin, Loïc
  *
  */
@@ -34,8 +34,8 @@ public class InterfaceReservationFestival extends JPanel implements ActionListen
 
 	/**
 	 * Constructeur de l'interface qui extends JPanel
-	 * @param festival
-	 * @param parProgramme
+	 * @param festival Festival pris en paramètre
+	 * @param parProgramme Programme pris en paramètre
 	 */
 	public InterfaceReservationFestival(Festival festival, Programme parProgramme){
 		chProgramme = parProgramme;

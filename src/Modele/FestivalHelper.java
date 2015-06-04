@@ -10,9 +10,10 @@ import java.util.List;
 public class FestivalHelper {
 /**
  * Méthode qui renvoie un arraylist de festival d'un genre donné
- * @param map
- * @param Genre
- * @return
+ * @param map prend la map du HashMap
+ * @param Genre prend la clef pour sélectionner dans le HashMap
+ * 
+ * @return List d'un genre précis
  */
 	public static List<Festival> extractListFestival(HashMap<String,ArrayList<Festival>> map,String Genre){
 		if (!map.isEmpty()){

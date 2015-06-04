@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 /**
- * Classe qui extends JButton qui stock un festival et change le couleur du bouton si le festival et complet
+ * Classe qui extends JButton qui stocke un festival et change la couleur du bouton si le festival est complet
  * @author Benjamin, Loïc
  *
  */
@@ -12,7 +12,7 @@ public class BoutonFestival extends JButton{
 	private Festival chFestival;
 	/**
 	 * Constructeur du bouton Reservation 
-	 * @param parFestival
+	 * @param parFestival Festival qui caractérise le bouton
 	 */
 	public BoutonFestival(Festival parFestival){
 		super("Réserver");
@@ -25,8 +25,9 @@ public class BoutonFestival extends JButton{
 			setBackground(Color.CYAN);
 	}
 	/**
-	 * Retourn le Festival dans le bouton
-	 * @return
+	 * Retourne le Festival dans le bouton
+	 * 
+	 * @return chFestival Renvoie le festival dans le bouton
 	 */
 	public Festival getFestival(){
 		return chFestival;

@@ -15,8 +15,8 @@ import Modele.Programme;
  */
 public class Fichier  {
 	/**
-	 *Méthode Lit un fichier et renvoi l'objet lu
-	 * @param parFichier
+	 * Méthode qui lit un fichier et renvoi l'objet lu
+	 * @param parFichier le fichier qui va être lu
 	 * @return l'objet lu
 	 */
 	public static Object lecture(File parFichier){
@@ -39,8 +39,9 @@ public class Fichier  {
 	}
 		/**
 		 * Méthode qui ecrit dans un fichier donné un objet donné
-		 * @param parFichier
-		 * @param parObject
+		 * 
+		 * @param parFichier fichier dans lequel l'objet va être écrit
+		 * @param parObject objet qui va être écrit dans fichier
 		 */
 		public static void ecriture(File parFichier, Object parObject){
 			ObjectOutputStream flux = null;
@@ -57,8 +58,8 @@ public class Fichier  {
 			}
 		}
 		/**
-		 *Méthode qui reset un fichier pour pas qu'il y est d'erreur où le fichier serais vide.
-		 * @param parFichier
+		 *Méthode qui reset un fichier pour éviter l'erreure ou le fichier serait vide.
+		 * @param parFichier fichier qui va être reset
 		 */
 		public static void reset(File parFichier){
 			ObjectOutputStream flux = null;

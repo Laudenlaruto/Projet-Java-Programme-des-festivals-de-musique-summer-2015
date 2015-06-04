@@ -21,7 +21,7 @@ import Modele.ExceptionDate;
 import Modele.Festival;
 import Modele.Programme;
 /**
- * Classe du conteneur secondaire, qui hérite de JPanel, instancie un JTabbedPane
+ * Classe du conteneur secondaire, qui hérite de JPanel, instancie un JMenu et un CardLayout
  * avec les interfaces de saisie, affichage et réservation
  * @author Loïc, Benjamin
  *

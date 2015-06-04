@@ -24,7 +24,7 @@ public class Date implements Serializable
 	//Tableau des jours de la semaine pour se servir de la fonction get day of week de Greogrian calendar. (-1 parcque tableau commence a 0)
 
 		/**
-		 * Constructeur par Défault qui renvoie la date courante
+		 * Constructeur par défaut qui renvoie la date courante
 		 */
 		public Date ()
 		{
@@ -37,11 +37,11 @@ public class Date implements Serializable
 			chMoisAnnee = moisDeLannee[chMois-1];
 		}//Date()
 	/**
-	 * Construcuteur avec Parametre qui renvoie la date grace a l'anné le mois et le jour	
-	 * @param parJour
-	 * @param parMois
-	 * @param parAn
-	 * @throws ExceptionDate
+	 * Constructeur avec paramètre qui renvoie la date grâce a l'année, le mois et le jour	
+	 * @param parJour jour de la date
+	 * @param parMois mois de la date
+	 * @param parAn année de la date
+	 * @throws ExceptionDate Exception qui renvoit un string si la date est non valide
 	 */
 		public Date (int parJour, int parMois, int parAn) throws ExceptionDate
 		{
@@ -64,7 +64,7 @@ public class Date implements Serializable
 		return(chJour+" "+chMoisAnnee);
 	}//toString()
 	/**
-	 * Méthode permetant de déterminer le dernier jour du mois grâce au mois et a l'année
+	 * Méthode qui permet de déterminer le dernier jour du mois grâce au mois et a l'année
 	 * @param parMois le mois pour lequel on cherche le dernier jour du mois
 	 * @param parAn l'année pour lequel on cherche le dernier jour du mois
 	 * @return le dernier jour du mois : int
@@ -99,6 +99,12 @@ public class Date implements Serializable
 			return false;
 		return true;
 	}//estValide()
+	/**
+	 * 
+	 * Méthode qui vérifie si la date passée en paramètre précède la date appelante
+	 * @param parDate (date à comparer)
+	 * @return int (1 pour précède, 0 pour égale, -1 pour ne précède pas)
+	 */
 	
 	public int precede(Date parDate){
 		if(this.chAn > parDate.chAn)
@@ -116,6 +122,12 @@ public class Date implements Serializable
 	return 0;
 	}//precede()
 	
+	/**
+	 * Méthode qui va créer un tableau d'intervale de date entre la date appelante et la date passée en paramètre
+	 * @param parDate1 date de fin qui permet l'élaboration de l'intervale
+	 * @return Date[], le tableau de date à mettre dans festival
+	 * @throws ExceptionDate Exception qui affiche si la date est non valide
+	 */
 	public Date[] intervaleFestival(Date parDate1) throws ExceptionDate{
 		int nbBoucle;
 		if (this.chMois == parDate1.chMois){
