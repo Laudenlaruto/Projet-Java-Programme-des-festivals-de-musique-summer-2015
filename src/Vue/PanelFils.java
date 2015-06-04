@@ -7,10 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.xml.ws.handler.MessageContext.Scope;
@@ -46,6 +48,7 @@ public class PanelFils extends JPanel implements ActionListener{
 	    menuBar.add(initMenu);
 	    initMenu.setAccelerator(KeyStroke.getKeyStroke('I',java.awt.Event.CTRL_MASK));
 	    progMenu.addActionListener(this);
+	 
 	    menuBar.add(progMenu);
 	    progMenu.setAccelerator(KeyStroke.getKeyStroke('P',java.awt.Event.CTRL_MASK));
 	    reservMenu.addActionListener(this);
@@ -54,19 +57,18 @@ public class PanelFils extends JPanel implements ActionListener{
 	    initMenu.setBackground(new Color(208,237,189));
 	    progMenu.setBackground(new Color(208,237,189));
 	    reservMenu.setBackground(new Color(208,237,189));
-	    
 	    //BorderLayout
 	    this.setLayout(new BorderLayout());
 	    panelMenu.setLayout(new BorderLayout());
 		panelMenu.add(menuBar,BorderLayout.WEST);
 		add(panelMenu,BorderLayout.NORTH);
-		
+		menuBar.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
 		//Cardlayout
 		panelInterface.setLayout(diapoInterface);
 		//Intilisation du programme avec fichier 
 		Programme programme;
 		programme = (Programme)Fichier.lecture(file);
-		Fichier.reset(file);
+		//Fichier.reset(file);
 		//Table affichage
 		chTableInterfaceAffichage.setRowHeight(50);
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(programme));
