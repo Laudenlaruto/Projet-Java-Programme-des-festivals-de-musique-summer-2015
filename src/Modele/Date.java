@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
+
+import javax.swing.JOptionPane;
 /**
  * Classe qui permet de créer une date contenant:
  * le jour, le mois, l'année, le numero du jour de la semaine en int
@@ -131,43 +133,48 @@ public class Date implements Serializable
 	 */
 	public Date[] intervalleFestival(Date parDate1) throws ExceptionDate{
 		int nbBoucle;
-		if (this.chMois == parDate1.chMois){
-			if(this.chJour == parDate1.chJour){
-				Date[] tabDate = new Date[1];
-				tabDate[0]=new Date(this.chJour,parDate1.chMois,2015);
-				
-				return tabDate;
+		
+		if(this.precede(parDate1)==0||this.precede(parDate1)==1){
+			if (this.chMois == parDate1.chMois){
+				if(this.chJour == parDate1.chJour){
+					Date[] tabDate = new Date[1];
+					tabDate[0]=new Date(this.chJour,parDate1.chMois,2015);
+					
+					return tabDate;
+				}//if
+				else{
+					nbBoucle = parDate1.chJour - this.chJour +1;
+					Date[] tabDate = new Date[nbBoucle];
+					int j = 0;
+					for (int i=this.chJour; i <= parDate1.chJour; i++){
+						tabDate[j]=new Date(i,this.chMois,2015);
+						j++;
+					}//for
+					
+					return tabDate;
+				}//else
 			}//if
-			else{
-				nbBoucle = parDate1.chJour - this.chJour +1;
-				Date[] tabDate = new Date[nbBoucle];
+			else
+			{
 				int j = 0;
-				for (int i=this.chJour; i <= parDate1.chJour; i++){
-					tabDate[j]=new Date(i,this.chMois,2015);
+				nbBoucle = dernierJourDuMois(this.chMois,2015) - this.chJour +1;
+				int nbBoucle2 = parDate1.chJour;
+				Date[] tabDate = new Date[nbBoucle+nbBoucle2];
+				for (int i = this.chJour;i <= dernierJourDuMois(this.chMois,2015);i++){
+					tabDate[j]=new Date (i,this.chMois,2015);
+					j++;
+				}//for
+				for (int i = 1; i <= parDate1.chJour;i++){
+					tabDate[j]=new Date (i,parDate1.chMois,2015);
 					j++;
 				}//for
 				
 				return tabDate;
 			}//else
-		}//if
-		else
-		{
-			int j = 0;
-			nbBoucle = dernierJourDuMois(this.chMois,2015) - this.chJour +1;
-			int nbBoucle2 = parDate1.chJour;
-			Date[] tabDate = new Date[nbBoucle+nbBoucle2];
-			for (int i = this.chJour;i <= dernierJourDuMois(this.chMois,2015);i++){
-				tabDate[j]=new Date (i,this.chMois,2015);
-				j++;
-			}//for
-			for (int i = 1; i <= parDate1.chJour;i++){
-				tabDate[j]=new Date (i,parDate1.chMois,2015);
-				j++;
-			}//for
-			
-			return tabDate;
-		}//else
-		
+		}
+		else{
+			return null;
+		}
 		
 		
 	}//intervaleFestival()

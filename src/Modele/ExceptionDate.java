@@ -1,4 +1,7 @@
 package Modele;
+
+import javax.swing.JOptionPane;
+
 /**
  * Exception pour la classe Date qui verifie:
  *	Si la date est valide et renvoi le String "Date Invalide"
@@ -8,7 +11,8 @@ package Modele;
 public class ExceptionDate extends Exception{
 	public ExceptionDate(String parstr)
 	{
-		super(parstr);// appel le construcuteur de la class mère.
+		System.out.println(parstr);
+		//super(parstr);// appel le construcuteur de la class mère.
 	}
 
 }

@@ -133,7 +133,7 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent parEvt){
 		
-		
+		//Change la ComboBox
 		if ((String) comboDateDMois.getSelectedItem() == "Aout"){
 				comboDateFMois.setSelectedItem("Aout");
 				comboDateFMois.setEnabled(false);
@@ -141,45 +141,45 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 		else{
 				comboDateFMois.setEnabled(true);
 		}
-		
+		//Création d'un festival
 		if (parEvt.getSource() == boutonCree){
-		Festival festival;
-		Date date1;
-		Date date2;
-		if (fieldNom.getText().length() != 0 && fieldLieu.getText().length() != 0){
-		try{
-			date1 = new Date(convertJour[comboDateDJour.getSelectedIndex()],convertMois[comboDateDMois.getSelectedIndex()],2015);
-			date2 = new Date(convertJour[comboDateFJour.getSelectedIndex()],convertMois[comboDateFMois.getSelectedIndex()],2015);
-			if (date1.precede(date2) == 1 || date1.precede(date2) == 0){
-				if (!fieldImagePath.getText().equals("(Optionnel)")){
-					festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),fieldImagePath.getText(),Integer.parseInt(comboPrix.getSelectedItem().toString()));
-				}//if
+			Festival festival;
+			Date date1;
+			Date date2;
+			if (fieldNom.getText().length() != 0 && fieldLieu.getText().length() != 0){
+			try{
+				date1 = new Date(convertJour[comboDateDJour.getSelectedIndex()],convertMois[comboDateDMois.getSelectedIndex()],2015);
+				date2 = new Date(convertJour[comboDateFJour.getSelectedIndex()],convertMois[comboDateFMois.getSelectedIndex()],2015);
+				if (date1.precede(date2) == 1 || date1.precede(date2) == 0){
+					if (!fieldImagePath.getText().equals("(Optionnel)")){
+						festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),fieldImagePath.getText(),Integer.parseInt(comboPrix.getSelectedItem().toString()));
+					}//if
+					else{
+						festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),cheminDefaut,Integer.parseInt(comboPrix.getSelectedItem().toString()));
+					}//else
+					chProgramme.ajout(festival);
+					chTableLocal.setModel(new InterfaceAffichage(chProgramme));
+					for(int i=0; i<Festival.Genres.length;i++){
+						chTableLocal.getColumnModel().getColumn(i).setPreferredWidth(400);
+						}
+					chInterfaceResv.ajoutFestival(festival);
+					Fichier.ecriture(file, chProgramme);
+					}//if
 				else{
-					festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),cheminDefaut,Integer.parseInt(comboPrix.getSelectedItem().toString()));
+				JOptionPane.showMessageDialog(this, "La date est invalide ! \n La date de début précède la date de fin", " Erreur ! ",JOptionPane.WARNING_MESSAGE);
 				}//else
-				chProgramme.ajout(festival);
-				chTableLocal.setModel(new InterfaceAffichage(chProgramme));
-				for(int i=0; i<Festival.Genres.length;i++){
-					chTableLocal.getColumnModel().getColumn(i).setPreferredWidth(400);
-					}
-				chInterfaceResv.ajoutFestival(festival);
-				Fichier.ecriture(file, chProgramme);
-				}//if
+				
+			}//try
+			catch (ExceptionDate e) {
+				e.printStackTrace();
+			}//catch
+			}//if
 			else{
-			JOptionPane.showMessageDialog(this, "La date est invalide ! \n La date de début précède la date de fin", " Erreur ! ",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, 
+				         "Veuillez compléter tout les champs",
+				         " Erreur ! ",
+				         JOptionPane.WARNING_MESSAGE);
 			}//else
-			
-		}//try
-		catch (ExceptionDate e) {
-			e.printStackTrace();
-		}//catch
-		}//if
-		else{
-			JOptionPane.showMessageDialog(this, 
-			         "Veuillez compléter tout les champs",
-			         " Erreur ! ",
-			         JOptionPane.WARNING_MESSAGE);
-		}//else
 		
 		
 	} 

@@ -71,13 +71,14 @@ public class PanelFils extends JPanel implements ActionListener{
 		//Fichier.reset(file);
 		//Table affichage
 		chTableInterfaceAffichage.setRowHeight(50);
+		
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(programme));
 		chTableInterfaceAffichage.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		for(int i=0; i<Festival.Genres.length;i++){
 			chTableInterfaceAffichage.getColumnModel().getColumn(i).setPreferredWidth(400);
 			}
 		JScrollPane scrollAffichage = new JScrollPane(chTableInterfaceAffichage);
-		
+		chTableInterfaceAffichage.setEnabled(false);
 		diapoInterface.addLayoutComponent(scrollAffichage, "InterfaceAffichage");
 		panelInterface.add(scrollAffichage,BorderLayout.CENTER);
 		chTableInterfaceAffichage.setBackground(new Color(208,237,189));
