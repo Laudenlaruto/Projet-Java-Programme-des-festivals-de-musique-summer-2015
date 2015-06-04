@@ -34,8 +34,8 @@ public class InterfaceReservationFestival extends JPanel implements ActionListen
 
 	/**
 	 * Constructeur de l'interface qui extends JPanel
-	 * @param festival
-	 * @param parProgramme
+	 * @param festival Festival pris en paramètre
+	 * @param parProgramme Programme pris en paramètre
 	 */
 	public InterfaceReservationFestival(Festival festival, Programme parProgramme){
 		chProgramme = parProgramme;

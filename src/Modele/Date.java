@@ -38,10 +38,10 @@ public class Date implements Serializable
 		}//Date()
 	/**
 	 * Constructeur avec paramètre qui renvoie la date grâce a l'année, le mois et le jour	
-	 * @param parJour
-	 * @param parMois
-	 * @param parAn
-	 * @throws ExceptionDate
+	 * @param parJour jour de la date
+	 * @param parMois mois de la date
+	 * @param parAn année de la date
+	 * @throws ExceptionDate Exception qui renvoit un string si la date est non valide
 	 */
 		public Date (int parJour, int parMois, int parAn) throws ExceptionDate
 		{
@@ -124,9 +124,9 @@ public class Date implements Serializable
 	
 	/**
 	 * Méthode qui va créer un tableau d'intervale de date entre la date appelante et la date passée en paramètre
-	 * @param parDate1 
+	 * @param parDate1 date de fin qui permet l'élaboration de l'intervale
 	 * @return Date[], le tableau de date à mettre dans festival
-	 * @throws ExceptionDate
+	 * @throws ExceptionDate Exception qui affiche si la date est non valide
 	 */
 	public Date[] intervaleFestival(Date parDate1) throws ExceptionDate{
 		int nbBoucle;

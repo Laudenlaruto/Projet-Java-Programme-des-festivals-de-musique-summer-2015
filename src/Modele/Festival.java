@@ -20,40 +20,17 @@ public class Festival implements Serializable {
 	public static final String[] Genres = {"Rock","Pop","Jazz","Electronique","Blues","Classique","Metal","Reggae"};
 	
 	/**
-	 * Constructeur permettant de rentrer directement le tableau de date
-	 * 
-	 * @param parNom
-	 * @param parGenre
-	 * @param parDate
-	 * @param parLieu
-	 * @param parPlaces
-	 * @param parImagePath
-	 * @param parPrix
-	 */
-
-	public Festival(String parNom, String parGenre, Date[] parDate, String parLieu, int[] parPlaces, String parImagePath, int parPrix) {
-
-		chNom = parNom;
-		chGenre = parGenre;
-		chDate = parDate;
-		chLieu = parLieu;
-		chImagePath = parImagePath;
-		chPlaces = parPlaces;
-		chPrix = parPrix;
-	}//Festival()
-	
-	/**
 	 * Constructeur prennant cette fois deux dates et crée l'intervale via la fonction intervaleFestival() de date
 	 * 
-	 * @param parNom
-	 * @param parGenre
-	 * @param parDate1
-	 * @param parDate2
-	 * @param parLieu
-	 * @param parPlace
-	 * @param parImagePath
-	 * @param parPrix
-	 * @throws ExceptionDate
+	 * @param parNom nom du festival
+	 * @param parGenre genre du festival
+	 * @param parDate1 date1 pour interval
+	 * @param parDate2 date2 pour interval
+	 * @param parLieu lieu du festival
+	 * @param parPlace nombre de place du festival
+	 * @param parImagePath chemin de l'image pour le festival
+	 * @param parPrix prix du festival 
+	 * @throws ExceptionDate exception qui renvoit un string si la date est non valide
 	 */
 	
 	public Festival(String parNom, String parGenre, Date parDate1, Date parDate2, String parLieu, int parPlace, String parImagePath, int parPrix) throws ExceptionDate{ 
@@ -74,7 +51,7 @@ public class Festival implements Serializable {
 	
 	/**
 	 * Méthode qui renvoie un string selon le jour de début et le jour fin du festival
-	 * @param this
+	 * 
 	 * @return String
 	 */
 	
@@ -92,8 +69,7 @@ public class Festival implements Serializable {
 	 * 
 	 * Méthode qui permet de vérifier si il y a des places de libres pour un festival
 	 * 
-	 * @param parJour
-	 * @param parMois
+	 * @param parDate qui permet de cibler un nombre de réservation particulier
 	 * @return int du nombre de place disponible
 	 */
 	

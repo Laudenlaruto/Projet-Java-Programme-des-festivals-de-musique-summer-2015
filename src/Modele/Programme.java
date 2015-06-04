@@ -22,7 +22,7 @@ public class Programme implements Serializable{
 		/**
 		 * Méthode qui ajoute un festival avec son genre comme clé
 		 * Verifie si la clé est déjà présente dans la HashMap et si elle l'est, l'ajoute avec la même clé sinon la crée.
-		 * @param parFestival
+		 * @param parFestival prend le festival à ajouter dans la HashMap
 		 */
 		public void ajout(Festival parFestival)
 		{

@@ -12,7 +12,7 @@ public class BoutonFestival extends JButton{
 	private Festival chFestival;
 	/**
 	 * Constructeur du bouton Reservation 
-	 * @param parFestival
+	 * @param parFestival Festival qui caractérise le bouton
 	 */
 	public BoutonFestival(Festival parFestival){
 		super("Réserver");
@@ -26,7 +26,8 @@ public class BoutonFestival extends JButton{
 	}
 	/**
 	 * Retourne le Festival dans le bouton
-	 * @return
+	 * 
+	 * @return chFestival Renvoie le festival dans le bouton
 	 */
 	public Festival getFestival(){
 		return chFestival;
