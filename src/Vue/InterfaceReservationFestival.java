@@ -22,6 +22,7 @@ import Modele.Programme;
  * @author Benjamin, Loïc
  *
  */
+
 public class InterfaceReservationFestival extends JPanel implements ActionListener {
 	private Programme chProgramme;	
 	JComboBox<Date> boxDates = new JComboBox<Date>();
