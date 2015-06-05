@@ -1,6 +1,7 @@
 package Modele;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Classe qui definit les festivals avec un nom, un genre, un tableau de Date, un lieu, un tableau de places, un chemin d'image et un prix
@@ -135,6 +136,9 @@ public class Festival implements Serializable {
 			i++;
 			}
 	}
+	
+		
+	
 	//Getter ----------------------
 	public String getChNom() {
 		return chNom;

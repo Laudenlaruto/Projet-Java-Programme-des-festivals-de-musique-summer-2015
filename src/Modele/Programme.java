@@ -75,6 +75,23 @@ public class Programme implements Serializable{
 			}
 			return max;
 		}
+		
+		public int nombreDeFestival(){
+			int chNombreDeGenres = Festival.Genres.length;
+			int nombreDeFestival=0;
+			for (int i = 0; i < chNombreDeGenres;i++ ){
+				List<Festival>  list = FestivalHelper.extractListFestival(this.getChProgramme(),Festival.Genres[i]);	
+				if(list !=null){
+					for (Festival festival : list){
+						if (festival.getChGenre().equalsIgnoreCase(Festival.Genres[i])){
+							nombreDeFestival++;
+						}
+					}
+				}
+			}
+			
+		 return nombreDeFestival;
+		}
 		public HashMap<String, ArrayList<Festival>> getChProgramme() {
 			return chProgramme;
 		}

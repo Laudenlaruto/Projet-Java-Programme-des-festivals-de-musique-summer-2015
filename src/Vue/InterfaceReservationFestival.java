@@ -75,11 +75,17 @@ public class InterfaceReservationFestival extends JPanel implements ActionListen
 		if(parEvt.getSource()==boxDates){
 			labelNombreDePlaces.setText("Places : "+chFestival.nombreDePlace(dateSelectionne));
 		}
-		if(parEvt.getSource()==boutonReservation){
-			chFestival.reservationFestival((Date)boxDates.getSelectedItem());
-			labelNombreDePlaces.setText("Places : "+chFestival.nombreDePlace(dateSelectionne));
-			JOptionPane.showMessageDialog(this, "La réservation à bien été effectuée","Confirmation",JOptionPane.PLAIN_MESSAGE);
-			Fichier.ecriture(file, chProgramme); 
+		if(chFestival.nombreDePlace(dateSelectionne)>0){
+			if(parEvt.getSource()==boutonReservation){
+				chFestival.reservationFestival((Date)boxDates.getSelectedItem());
+				labelNombreDePlaces.setText("Places : "+chFestival.nombreDePlace(dateSelectionne));
+				JOptionPane.showMessageDialog(this, "La réservation à bien été effectuée","Confirmation",JOptionPane.PLAIN_MESSAGE);
+				Fichier.ecriture(file, chProgramme); 
+			}
 		}
+		else{
+			JOptionPane.showMessageDialog(this, "Plus de place pour cette date!","Erreur",JOptionPane.WARNING_MESSAGE);
+		}
+			
 	}
 }

@@ -19,10 +19,7 @@ public class BoutonFestival extends JButton{
 		chFestival = parFestival;
 		
 		JButton bouton = new JButton(parFestival.toString());
-		if (chFestival.nombreDePlaceTotal()==0)
-			setBackground(Color.BLACK);
-		else
-			setBackground(Color.CYAN);
+		setBackground(Color.CYAN);
 	}
 	/**
 	 * Méthode qui retourne le Festival dans le bouton

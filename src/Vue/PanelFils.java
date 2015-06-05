@@ -67,11 +67,11 @@ public class PanelFils extends JPanel implements ActionListener{
 		panelInterface.setLayout(diapoInterface);
 		//Intilisation du programme avec fichier 
 		Programme programme;
-		programme = (Programme)Fichier.lecture(file);
 		//Fichier.reset(file);
-		//Table affichage
-		chTableInterfaceAffichage.setRowHeight(50);
+		programme = (Programme)Fichier.lecture(file);
 		
+		//Table affichage
+		chTableInterfaceAffichage.setRowHeight(100);
 		chTableInterfaceAffichage.setModel(new InterfaceAffichage(programme));
 		chTableInterfaceAffichage.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		for(int i=0; i<Festival.Genres.length;i++){
@@ -82,12 +82,12 @@ public class PanelFils extends JPanel implements ActionListener{
 		diapoInterface.addLayoutComponent(scrollAffichage, "InterfaceAffichage");
 		panelInterface.add(scrollAffichage,BorderLayout.CENTER);
 		chTableInterfaceAffichage.setBackground(new Color(208,237,189));
-	
+		
 		// Interface Réservation
 		chInterfaceReservation = new InterfaceReservation(programme);
-		diapoInterface.addLayoutComponent(chInterfaceReservation, "InterfaceRéservation");
-		panelInterface.add(chInterfaceReservation,BorderLayout.CENTER);
-		
+		JScrollPane scrollReservation = new JScrollPane(chInterfaceReservation);
+		diapoInterface.addLayoutComponent(scrollReservation, "InterfaceRéservation");
+		panelInterface.add(scrollReservation,BorderLayout.CENTER);
 		// Interface de saisie
 				chInterfaceSaisie= new InterfaceSaisie(programme,chTableInterfaceAffichage,chInterfaceReservation);
 				diapoInterface.addLayoutComponent(chInterfaceSaisie, "InterfaceSaisie");

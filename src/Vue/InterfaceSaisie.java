@@ -45,7 +45,7 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 	private JTextField fieldNom = new JTextField(8);
 	private JTextField fieldLieu = new JTextField(8);
 	//Tableau
-	private String[] tabPlace ={"100","500","1000","2000","4000","8000","16000","50000","100000","200000"};
+	private String[] tabPlace ={"10","100","500","1000","2000","4000","8000","16000","50000","100000","200000"};
 	private String[] tabMois = {"Juillet","Aout"};
 	private int[] convertMois = {7,8};
 	private String[] tabJour = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
@@ -157,7 +157,7 @@ public class InterfaceSaisie extends JPanel implements ActionListener{
 				date2 = new Date(convertJour[comboDateFJour.getSelectedIndex()],convertMois[comboDateFMois.getSelectedIndex()],2015);
 				if (date1.precede(date2) == 1 || date1.precede(date2) == 0){
 					if (!fieldImagePath.getText().equals("(Optionnel)")){
-						festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),fieldImagePath.getText(),Integer.parseInt(comboPrix.getSelectedItem().toString()));
+						festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),"Images/"+fieldImagePath.getText()+".jpg",Integer.parseInt(comboPrix.getSelectedItem().toString()));
 					}//if
 					else{
 						festival = new Festival(fieldNom.getText(),comboGenre.getSelectedItem().toString(),date1,date2,fieldLieu.getText(),Integer.parseInt(comboPlace.getSelectedItem().toString()),cheminDefaut,Integer.parseInt(comboPrix.getSelectedItem().toString()));

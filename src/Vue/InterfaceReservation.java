@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -35,10 +36,8 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 	
 	public InterfaceReservation(Programme parProgramme){
 		chProgramme = parProgramme;
-		int nombreDeFestivals = parProgramme.getChProgramme().size();
-		Float ligneFloat = new Float(nombreDeFestivals/4);
-		int nombreDeLigne = ligneFloat.intValue();// A tester
-		GridLayout gridLayout = new GridLayout(nombreDeLigne,4);
+		int nombreDeFestivals = chProgramme.nombreDeFestival();
+		GridLayout 	gridLayout = new GridLayout(nombreDeFestivals/4+1,4);
 		int chNombreDeGenres = Festival.Genres.length-1;
 		for (int i = 0; i <= chNombreDeGenres;i++ ){
 			List<Festival>  list = FestivalHelper.extractListFestival(parProgramme.getChProgramme(),Festival.Genres[i]);	
@@ -63,8 +62,8 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 					cont.gridwidth=2;
 					panelReservationFestival.add(boutonFestival,cont);
 					panelReservationFestival.setBackground(new Color(208,237,180));
-					panelReservationFestival.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
 					this.add(panelReservationFestival);
+					this.setBackground(new Color(208,237,180));
 					}
 				}
 			
@@ -78,7 +77,7 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 			JPanel panelReservationFestival = new JPanel();
 			panelReservationFestival.setLayout(new GridBagLayout());
 			GridBagConstraints cont = new GridBagConstraints();
-			JTextArea textFestival = new JTextArea(parFestival.toString()+"\n" + parFestival.getChGenre());
+			JTextArea textFestival = new JTextArea(parFestival.toStringReservation()+"\n" + parFestival.getChGenre());
 			textFestival.setEditable(false);
 			textFestival.setBackground(new Color(208,237,189));
 			boutonFestival = new BoutonFestival(parFestival);
@@ -93,8 +92,10 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 			cont.gridwidth=2;
 			panelReservationFestival.add(boutonFestival,cont);
 			panelReservationFestival.setBackground(new Color(208,237,180));
-			panelReservationFestival.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
 			setBackground(new Color(208,237,189));
+			int nombreDeFestivals = chProgramme.nombreDeFestival();
+			GridLayout gridLayout = new GridLayout(nombreDeFestivals/4+1,4);
+			this.setLayout(gridLayout);
 			this.add(panelReservationFestival);
 			this.validate();
 			this.repaint();
@@ -113,6 +114,9 @@ public class InterfaceReservation extends JPanel implements ActionListener {
 			dial.setTitle("Réservation");
 			dial.setContentPane(new InterfaceReservationFestival(festival,chProgramme));
 			dial.setVisible(true);
+		}
+		else{
+			JOptionPane.showMessageDialog(this, "Plus de place pour ce festival!","Erreur",JOptionPane.WARNING_MESSAGE);
 		}
 	}
 	
