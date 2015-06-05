@@ -36,7 +36,7 @@ public class testFestival {
 		date1 = new Date(12,7,2015);
 		date2 = new Date(15,8,2015);
 		festival = new Festival("test", "test", date1, date2, "test", 50, "test", 50);		
-		assertTrue("To string Faux",festival.toStringReservation().equals("le Festival test \nAura lieu à \ntest \nDu 12 Juillet au 15 Août"));
+		assertTrue("To string Faux",festival.toStringReservation().equals("le Festival test \nAura lieu à test \nDu 12 Juillet au 15 Août"));
 		
 		//Test 4 : 1 Juillet - 19 Juillet
 		

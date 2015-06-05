@@ -64,7 +64,7 @@ public class Festival implements Serializable {
 				}
 				return ("<html>le Festival "+chNom+" <br>Aura lieu à "+chLieu+" <br>Du "+chDate[0].getChJour()+" au "+chDate[chDate.length-1].getChJour()+" " +chDate[0].getChMoisAnnee()+"</html>");
 			}
-			return ("<html> le Festival "+chNom+" <br>Aura lieu à <br>"+chLieu+" <br>Du "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString()+"</html>");
+			return ("<html> le Festival "+chNom+" <br>Aura lieu à "+chLieu+" <br>Du "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString()+"</html>");
 			}
 		else
 			return null;
@@ -81,7 +81,7 @@ public class Festival implements Serializable {
 				}
 				return ("le Festival "+chNom+" \nAura lieu à "+chLieu+" \nDu "+chDate[0].getChJour()+" au "+chDate[chDate.length-1].getChJour()+" " +chDate[0].getChMoisAnnee());
 			}
-			return ("le Festival "+chNom+" \nAura lieu à \n"+chLieu+" \nDu "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString());
+			return ("le Festival "+chNom+" \nAura lieu à "+chLieu+" \nDu "+chDate[0].toString()+" au "+chDate[chDate.length-1].toString());
 			}
 		else
 			return null;
