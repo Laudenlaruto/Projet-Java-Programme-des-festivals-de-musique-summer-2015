@@ -48,7 +48,6 @@ public class PanelFils extends JPanel implements ActionListener{
 	    menuBar.add(initMenu);
 	    initMenu.setAccelerator(KeyStroke.getKeyStroke('I',java.awt.Event.CTRL_MASK));
 	    progMenu.addActionListener(this);
-	 
 	    menuBar.add(progMenu);
 	    progMenu.setAccelerator(KeyStroke.getKeyStroke('P',java.awt.Event.CTRL_MASK));
 	    reservMenu.addActionListener(this);

@@ -56,7 +56,7 @@ public class Festival implements Serializable {
 	 * @return String
 	 */
 	
-	public String toString(){
+	public String toStringHtml(){
 		if(this.chDate[0].precede(this.chDate[this.chDate.length-1])==0||this.chDate[0].precede(this.chDate[this.chDate.length-1])==1){
 			if(this.chDate[0].getChMois()==this.chDate[this.chDate.length-1].getChMois()){
 				if(this.chDate[0].getChJour()==this.chDate[this.chDate.length-1].getChJour()){
